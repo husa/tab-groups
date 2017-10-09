@@ -33,7 +33,12 @@ class Tab extends React.Component {
     if (!this.props.showActions) return null;
     return (
       <div className="tab__actions">
-        <Button onClick={this.onRemoveClick}>Remove</Button>
+        <Button
+          type="secondary"
+          outline
+          onClick={this.onRemoveClick}>
+          Remove
+        </Button>
       </div>
     );
   }

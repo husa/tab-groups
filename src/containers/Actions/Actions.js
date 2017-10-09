@@ -1,7 +1,10 @@
 import {connect} from 'react-redux';
 
-import {createNewGroup} from '../../actions/groups';
 import {selectGroups} from '../../selectors';
+import {
+  createNewGroup,
+  addTabToGroup
+} from '../../actions/groups';
 
 import Actions from '../../components/Actions/Actions';
 
@@ -13,6 +16,10 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   createNewGroup (name) {
     return dispatch(createNewGroup(name));
+  },
+
+  addTabToGroup (groupId, tab) {
+    return dispatch(addTabToGroup(groupId, tab));
   }
 });
 

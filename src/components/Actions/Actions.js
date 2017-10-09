@@ -1,11 +1,14 @@
 import './Actions.scss';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import autobind from 'autobindr';
 
 import Button from '../Button/Button';
 import GroupEditor from '../GroupEditor/GroupEditor';
 import GroupSelector from '../GroupSelector/GroupSelector';
+
+import tabs from '../../services/tabs';
 
 class Actions extends React.Component {
   constructor () {
@@ -31,7 +34,16 @@ class Actions extends React.Component {
   }
 
   onAddTabSaveClick () {
-    console.log('shit');
+    const {addTabGroup} = this.state;
+    tabs.getCurrent().then(tab => {
+      this.props.addTabToGroup(addTabGroup.id, {
+        title: tab.title,
+        url: tab.url,
+        favIconUrl: tab.favIconUrl,
+        pinned: tab.pinned
+      });
+    });
+    this.setState({showAddTabForm: false, addTabGroup: null});
   }
 
   onAddTabCancelClick () {
@@ -73,11 +85,16 @@ class Actions extends React.Component {
           groups={Object.values(this.props.groups)}
           onSelect={this.onAddTabGroupSelect} />
         <Button
+          type="primary"
           disabled={this.state.addTabGroup === null}
           onClick={this.onAddTabSaveClick}>
           Save
         </Button>
-        <Button onClick={this.onAddTabCancelClick}>Cancel</Button>
+        <Button
+          type="secondary"
+          onClick={this.onAddTabCancelClick}>
+          Cancel
+        </Button>
       </div>
     );
   }
@@ -86,10 +103,14 @@ class Actions extends React.Component {
     return (
       <div className="actions">
         <div className="actions__bar">
-          <Button onClick={this.onCreateNewGroupClick}>
+          <Button
+            type="primary"
+            onClick={this.onCreateNewGroupClick}>
             + New Group
           </Button>
-          <Button onClick={this.onAddTabClick}>
+          <Button
+            type="primary"
+            onClick={this.onAddTabClick}>
             Add Tab to Group
           </Button>
         </div>
@@ -101,5 +122,14 @@ class Actions extends React.Component {
     );
   }
 }
+
+Actions.propTypes = {
+  groups: PropTypes.object.isRequired,
+
+  createNewGroup: PropTypes.func.isRequired,
+  addTabToGroup: PropTypes.func.isRequired
+};
+
+Actions.defaultProps = {};
 
 export default Actions;

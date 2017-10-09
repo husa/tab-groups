@@ -7,6 +7,15 @@ class Tabs {
     });
   }
 
+  getCurrent () {
+    return new Promise(res => {
+      chrome.tabs.query({
+        active: true,
+        currentWindow: true
+      }, ([tab]) => res(tab));
+    });
+  }
+
   open (tabs, {newWindow = false} = {}) {
     return new Promise(resolve => {
       if (newWindow) {

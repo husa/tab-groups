@@ -6,13 +6,9 @@ import {deleteTab} from '../../actions/groups';
 import Groups from '../../components/Groups/Groups';
 
 
-const mapStateToProps = state => {
-  const groups = selectGroups(state);
-
-  return {
-    groups
-  };
-};
+const mapStateToProps = state => ({
+  groups: selectGroups(state)
+});
 
 const mapDispatchToProps = dispatch => ({
   onTabRemove (...args) {

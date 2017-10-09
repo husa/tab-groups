@@ -3,6 +3,7 @@ import uuid from 'uuid/v4';
 export const CREATE_NEW_GROUP = 'CREATE_NEW_GROUP';
 export const RENAME_GROUP = 'RENAME_GROUP';
 export const DELETE_GROUP = 'DELETE_GROUP';
+export const ADD_TAB_TO_GROUP = 'ADD_TAB_TO_GROUP';
 export const DELETE_TAB = 'DELETE_TAB';
 
 export const createNewGroup = group => {
@@ -37,6 +38,14 @@ export const deleteGroup = id => ({
   type: DELETE_GROUP,
   payload: {
     id
+  }
+});
+
+export const addTabToGroup = (groupId, tab) => ({
+  type: ADD_TAB_TO_GROUP,
+  payload: {
+    groupId,
+    tab
   }
 });
 

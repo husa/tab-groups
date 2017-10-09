@@ -1,5 +1,6 @@
 import {
   CREATE_NEW_GROUP,
+  ADD_TAB_TO_GROUP,
   DELETE_TAB
 } from '../actions/groups';
 
@@ -13,6 +14,17 @@ const groups = (state = getInitialState(), action) => {
       return {
         ...state,
         [group.id]: group
+      };
+    }
+
+    case ADD_TAB_TO_GROUP: {
+      const {groupId, tab} = action.payload;
+      return {
+        ...state,
+        [groupId]: {
+          ...state[groupId],
+          tabs: state[groupId].tabs.concat([tab])
+        }
       };
     }
 
