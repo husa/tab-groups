@@ -1,0 +1,49 @@
+@import '../../theme/vars';
+
+.group {
+  border-bottom: solid 1px $grey-light;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 1rem;
+  }
+
+  &__expand-icon {
+    transition: transform 300ms ease-out;
+  }
+
+  &__name {
+    flex: 0 1 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-left: .5rem;
+    min-width: 150px;
+  }
+
+  &__actions {
+    flex: 0 0 auto;
+  }
+
+  &--open &__expand-icon{
+    transform: rotate(180deg);
+  }
+
+  &__tabs {
+    overflow: hidden;
+    transition: max-height 300ms ease-out;
+
+    &--empty {
+      padding: 1rem;
+      font-weight: 300;
+      font-style: italic;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+@import '../../theme/vars';
+
+.actions {
+  padding: .5rem 1rem;
+  border-bottom: solid 1px $grey-light;
+
+  &__bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  &__content {
+    padding: .5rem 0 0;
+  }
+
+  &__add-tab {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+
+    .group-selector {
+      flex: 0 1 100%;
+      margin-right: .25rem;
+    }
+
+    .button {
+      flex: 0 0 auto;
+    }
+  }
+}
