@@ -38,4 +38,50 @@
   &:active {
     background-color: $button-bg-active;
   }
+
+  &--primary {
+    background: $color-primary;
+    color: $color-primary-text;
+
+    &:hover {
+      background: $color-primary-light;
+    }
+
+    &:active {
+      background: $color-primary-dark;
+    }
+  }
+
+  &--secondary {
+    background: $color-secondary;
+    color: $color-secondary-text;
+
+    &:hover {
+      background: $color-secondary-light;
+    }
+
+    &:active {
+      background: $color-secondary-dark;
+    }
+  }
+
+  &--outline {
+    transition: border 300ms ease-out, color 300ms ease-out;
+  }
+
+  &--outline#{&}--secondary {
+    background: none;
+    border: solid 1px transparent;
+    color: $color-secondary;
+
+    &:hover {
+      color: $color-secondary-light;
+      border-color: $color-secondary-light;
+    }
+
+    &:active {
+      color: $color-secondary-dark;
+      border-color: $color-secondary-dark;
+    }
+  }
 }

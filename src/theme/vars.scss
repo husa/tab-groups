@@ -1,18 +1,28 @@
 $body-font-size: 16px;
 $body-font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 
-$border-radius: 2px;
+$border-radius: 3px;
 
-$color-brand: #1E88E5;
-$color-danger: #F44336;
+$color-primary: #42A5F5;
+$color-primary-light: #6ab7ff;
+$color-primary-dark: #005cb2;
+$color-secondary: #E53935;
+$color-secondary-light: #ff6f60;
+$color-secondary-dark: #ab000d;
+$color-primary-text: #fafafa;
+$color-secondary-text: #fafafa;
+
 $grey-light: #eee;
 
-$text-color: #424242;
-$text-color-light: #BDBDBD;
+$text-color: #212121;
+$text-color-muted: #BDBDBD;
+$text-color-light: #FAFAFA;
 
 $button-bg: #EEEEEE;
 $button-bg-hover: #f0f0f0;
 $button-bg-active: #ccc;
 
 $zindex-dropdown: 1000;
+
+
 
