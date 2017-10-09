@@ -1,0 +1,59 @@
+{
+  "name": "tab-groups",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clear": "rimraf ./build && mkdirp ./build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm-run-all clear build:assets start:code",
+    "start:code": "cross-env NODE_ENV=development webpack -w",
+    "build": "npm-run-all clear build:*",
+    "build:assets": "cp -r ./src/assets ./src/manifest.json ./build",
+    "build:code": "cross-env NODE_ENV=production webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/husa/tab-groups.git"
+  },
+  "author": "Yuriy Husnay",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/husa/tab-groups/issues"
+  },
+  "homepage": "https://github.com/husa/tab-groups#readme",
+  "devDependencies": {
+    "@eleks/eslint-config-eleks": "^0.2.1",
+    "autobindr": "^1.0.5",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "cross-env": "^5.0.5",
+    "css-loader": "^0.28.7",
+    "eslint": "^4.8.0",
+    "eslint-plugin-react": "^7.4.0",
+    "extract-text-webpack-plugin": "^3.0.1",
+    "html-webpack-plugin": "^2.30.1",
+    "mkdirp": "^0.5.1",
+    "node-sass": "^4.5.3",
+    "npm-run-all": "^4.1.1",
+    "rimraf": "^2.6.2",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.0",
+    "uglifyjs-webpack-plugin": "^0.4.6",
+    "uuid": "^3.1.0",
+    "webpack": "^3.6.0"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0"
+  }
+}
