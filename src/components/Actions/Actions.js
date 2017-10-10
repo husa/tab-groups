@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 import autobind from 'autobindr';
 
 import Button from '../Button/Button';
-import GroupEditor from '../GroupEditor/GroupEditor';
+import Icon from '../Icon/Icon';
+import GroupCreate from '../GroupCreate/GroupCreate';
 import GroupSelector from '../GroupSelector/GroupSelector';
 
 import tabs from '../../services/tabs';
@@ -14,8 +15,8 @@ class Actions extends React.Component {
   constructor () {
     super();
     this.state = {
-      showNewGroupForm: false,
-      showAddTabForm: true,
+      showNewGroupForm: true,
+      showAddTabForm: false,
 
       newGroupName: '',
       newGroupSaveOpenTabs: false,
@@ -67,13 +68,21 @@ class Actions extends React.Component {
     });
   }
 
+  onNewGroupCancel () {
+    this.setState({
+      newGroupName: '',
+      showNewGroupForm: false
+    });
+  }
+
   getNewGroupForm () {
     if (!this.state.showNewGroupForm) return null;
     return (
-      <GroupEditor
+      <GroupCreate
         name={this.state.newGroupName}
         onChange={this.onNewGroupChange}
-        onSave={this.onNewGroupSave} />
+        onSave={this.onNewGroupSave}
+        onCancel={this.onNewGroupCancel} />
     );
   }
 
@@ -88,11 +97,13 @@ class Actions extends React.Component {
           type="primary"
           disabled={this.state.addTabGroup === null}
           onClick={this.onAddTabSaveClick}>
+          <Icon name="checkmark" />
           Save
         </Button>
         <Button
           type="secondary"
           onClick={this.onAddTabCancelClick}>
+          <Icon name="close" />
           Cancel
         </Button>
       </div>
@@ -106,11 +117,13 @@ class Actions extends React.Component {
           <Button
             type="primary"
             onClick={this.onCreateNewGroupClick}>
-            + New Group
+            <Icon name="plus-box-multiple-outline" />
+            New Group
           </Button>
           <Button
             type="primary"
             onClick={this.onAddTabClick}>
+            <Icon name="plus-box-outline" />
             Add Tab to Group
           </Button>
         </div>

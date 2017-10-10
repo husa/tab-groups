@@ -1,0 +1,31 @@
+@import '../../theme/vars';
+
+.group-create {
+  padding: .5rem 0 0;
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+
+    .input {
+      flex: 0 1 100%;
+    }
+
+    .button {
+      flex: 0 0 auto;
+    }
+  }
+
+  &__tabs-check {
+    padding: .5rem 0;
+  }
+
+  &__tabs {
+    &--disabled {
+      opacity: .5;
+      pointer-events: none;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import './GroupEditor.scss';
+import './GroupCreate.scss';
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -6,11 +6,15 @@ import autobind from 'autobindr';
 import classNames from 'classnames';
 
 import tabsService from '../../services/tabs';
-import Tab from '../Tab/Tab';
+
 import Button from '../Button/Button';
+import Input from '../Input/Input';
+import Checkbox from '../Checkbox/Checkbox';
+import Icon from '../Icon/Icon';
+import Tab from '../Tab/Tab';
 
 
-class GroupEditor extends React.Component {
+class GroupCreate extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -37,7 +41,7 @@ class GroupEditor extends React.Component {
     this.setState({includeOpened: e.target.checked});
   }
 
-  onSave () {
+  onSaveClick () {
     if (!this.state.name) return null;
     let tabs = [];
     if (this.state.includeOpened) {
@@ -54,6 +58,10 @@ class GroupEditor extends React.Component {
       name: this.state.name,
       tabs
     });
+  }
+
+  onCancelClick () {
+    this.props.onCancel();
   }
 
   onTabChecked (tab) {
@@ -81,28 +89,38 @@ class GroupEditor extends React.Component {
 
   render () {
     return (
-      <div className="group-editor">
-        <div className="group-editor__actions">
-          <input
-            className="group-editor__input"
-            type="text"
+      <div className="group-create">
+        <div className="group-create__actions">
+          <Input
+            className="group-create__input"
+            placeholder="Group Name"
             value={this.state.name}
             onChange={this.onChange} />
           <Button
+            type="primary"
             disabled={this.state.name === ''}
-            onClick={this.onSave}>
+            onClick={this.onSaveClick}>
+              <Icon name="checkmark" />
               Save
           </Button>
-          <label>
-            <input
-              type="checkbox"
-              checked={this.state.includeOpened}
-              onChange={this.onOpenedTabsChange} />
-            <span>Include open tabs</span>
-          </label>
+          <Button
+            type="secondary"
+            onClick={this.onCancelClick}>
+            <Icon name="close" />
+            Cancel
+          </Button>
         </div>
-        <div className={classNames('group-editor__tabs', {
-          'group-editor__tabs--disabled': !this.state.includeOpened
+
+        <div className="group-create__tabs-check">
+          <Checkbox
+            checked={this.state.includeOpened}
+            onChange={this.onOpenedTabsChange}>
+            Include open tabs
+          </Checkbox>
+        </div>
+
+        <div className={classNames('group-create__tabs', {
+          'group-create__tabs--disabled': !this.state.includeOpened
         })}>
           {this.getTabs()}
         </div>
@@ -112,14 +130,14 @@ class GroupEditor extends React.Component {
 }
 
 
-// GroupEditor.propTypes = {
+// GroupCreate.propTypes = {
 //   name: PropTypes.string,
 //   onChange: PropTypes.func.isRequired,
 //   onSave: PropTypes.func.isRequired
 // };
 
-// GroupEditor.defaultProps = {
+// GroupCreate.defaultProps = {
 //   name: ''
 // };
 
-export default GroupEditor;
+export default GroupCreate;

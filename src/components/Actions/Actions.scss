@@ -10,15 +10,14 @@
     justify-content: flex-start;
   }
 
-  &__content {
-    padding: .5rem 0 0;
-  }
+  &__content {}
 
   &__add-tab {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
+    padding: .5rem 0 0;
 
     .group-selector {
       flex: 0 1 100%;

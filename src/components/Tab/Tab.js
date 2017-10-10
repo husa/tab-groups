@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import autobind from 'autobindr';
 
 import Button from '../Button/Button';
+import Icon from '../Icon/Icon';
 
 
 const defaultFavIcon = 'http://placehold.it/20x20';
@@ -37,6 +38,7 @@ class Tab extends React.Component {
           type="secondary"
           outline
           onClick={this.onRemoveClick}>
+          <Icon name="delete-forever" />
           Remove
         </Button>
       </div>

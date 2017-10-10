@@ -1,9 +1,9 @@
 @import '../../theme/vars';
 
 .button {
-  height: 2.25rem;
-  line-height: 2.25rem;
-  padding: 0 1rem;
+  height: $input-height;
+  line-height: $input-height;
+  padding: $input-padding-y $input-padding-x;
   margin: 0 .25rem;
   font-size: .875rem;
   white-space: nowrap;
@@ -14,6 +14,12 @@
   border-radius: $border-radius;
   transition: background-color 300ms ease-out;
   cursor: pointer;
+
+  .icon {
+    width: $input-height / 2;
+    height: $input-height / 2;
+    margin-right: .25rem;
+  }
 
   &[disabled] {
     opacity: .5;
@@ -42,6 +48,7 @@
   &--primary {
     background: $color-primary;
     color: $color-primary-text;
+    fill: $color-primary-text;
 
     &:hover {
       background: $color-primary-light;
@@ -55,6 +62,7 @@
   &--secondary {
     background: $color-secondary;
     color: $color-secondary-text;
+    fill: $color-secondary-text;
 
     &:hover {
       background: $color-secondary-light;
@@ -73,14 +81,17 @@
     background: none;
     border: solid 1px transparent;
     color: $color-secondary;
+    fill: $color-secondary;
 
     &:hover {
       color: $color-secondary-light;
+      fill: $color-secondary-light;
       border-color: $color-secondary-light;
     }
 
     &:active {
       color: $color-secondary-dark;
+      fill: $color-secondary-dark;
       border-color: $color-secondary-dark;
     }
   }
