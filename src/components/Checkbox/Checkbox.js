@@ -4,15 +4,15 @@ import React from 'react';
 
 
 const Checkbox = ({children, ...props}) => (
-  <div className="checkbox">
-    <label>
-      <input
-        className="checkbox__input"
-        type="checkbox"
-        {...props} />
+  <label className="checkbox">
+    <input
+      className="checkbox__input"
+      type="checkbox"
+      {...props} />
+    <span className="checkbox__text">
       {children}
-    </label>
-  </div>
+    </span>
+  </label>
 );
 
 Checkbox.propTypes = {};
