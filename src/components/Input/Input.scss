@@ -1,0 +1,28 @@
+@import '../../theme/vars';
+
+.input {
+  height: $input-height;
+  line-height: $input-height;
+  padding: $input-padding-y $input-padding-x;
+  margin: 0 .25rem;
+  font-size: .875rem;
+  white-space: nowrap;
+  background: none;
+  border: solid 1px $grey-light;
+  border-radius: $border-radius;
+  transition: border 300ms ease-out;
+  cursor: pointer;
+
+  &:focus {
+    border-color: $color-primary;
+    outline: none;
+  }
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
