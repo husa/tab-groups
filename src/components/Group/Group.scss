@@ -2,9 +2,19 @@
 
 .group {
   border-bottom: solid 1px $grey-light;
+  cursor: pointer;
 
   &:last-child {
     border-bottom: none;
+  }
+
+  $s: &;
+
+  &--open, &:hover {
+    #{$s}__expand-icon, #{$s}__name {
+    color: $color-primary;
+    fill: $color-primary;
+  }
   }
 
   &__header {
@@ -16,7 +26,7 @@
   }
 
   &__expand-icon {
-    transition: transform 300ms ease-out;
+    transition: transform 300ms ease-out, fill 100ms ease-out;
   }
 
   &__name {
@@ -26,6 +36,7 @@
     text-overflow: ellipsis;
     margin-left: .5rem;
     min-width: 150px;
+    transition: color 100ms ease-out;
   }
 
   &__actions {
