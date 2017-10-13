@@ -30,6 +30,18 @@ class Tab extends React.Component {
     );
   }
 
+  getFavIcon () {
+    const {tab} = this.props;
+    if (tab.favIconUrl) {
+      return (
+        <img src={tab.favIconUrl} alt={tab.title} />
+      );
+    }
+    return (
+      <span className="tab__icon__placeholder" />
+    );
+  }
+
   getTabActions () {
     if (!this.props.showActions) return null;
     return (
@@ -52,7 +64,7 @@ class Tab extends React.Component {
         {this.getCheckbox()}
         <div className="tab__info">
           <div className="tab__icon">
-            <img src={tab.favIconUrl || defaultFavIcon} alt={tab.title} />
+            {this.getFavIcon()}
           </div>
           <div className="tab__title">
             {tab.title}
