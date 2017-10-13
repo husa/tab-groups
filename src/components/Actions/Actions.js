@@ -15,7 +15,7 @@ class Actions extends React.Component {
   constructor () {
     super();
     this.state = {
-      showNewGroupForm: true,
+      showNewGroupForm: false,
       showAddTabForm: false,
 
       newGroupName: '',
