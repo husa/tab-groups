@@ -5,13 +5,12 @@
 
   "description" : "TODO: add description",
 
-  "default_locale__DISABLED": "en",
-
   "browser_action": {
-    "default_icon": "assets/icon.png",
+    "default_icon": "assets/icons/icon_19.png",
     "default_popup": "index.html"
   },
   "permissions": [
+    "storage",
     "tabs"
   ],
 
