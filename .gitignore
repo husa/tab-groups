@@ -1,7 +1,7 @@
 # Project specifics
 /build
 package-lock.json
-.DS_Store
+**/.DS_Store
 
 # Logs
 logs
