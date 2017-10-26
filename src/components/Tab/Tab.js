@@ -6,14 +6,12 @@ import autobind from 'autobindr';
 
 import Button from '../Button/Button';
 import Icon from '../Icon/Icon';
+import Checkbox from '../Checkbox/Checkbox';
 
-
-const defaultFavIcon = 'http://placehold.it/20x20';
 
 class Tab extends React.Component {
   constructor () {
     super();
-    this.state = {};
     autobind(this);
   }
 
@@ -24,9 +22,10 @@ class Tab extends React.Component {
   getCheckbox () {
     if (!this.props.showCheckbox) return null;
     return (
-      <div className="tab__checkbox">
-        <input type="checkbox" checked={this.props.checked} onChange={this.props.onCheck} />
-      </div>
+      <Checkbox
+        className="tab__checkbox"
+        checked={this.props.checked}
+        onChange={this.props.onCheck} />
     );
   }
 
