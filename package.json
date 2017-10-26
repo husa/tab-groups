@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clear": "rimraf ./build && mkdirp ./build",
+    "lint": "eslint ./src",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm-run-all clear build:assets start:code",
     "start:code": "cross-env NODE_ENV=development webpack -w",
