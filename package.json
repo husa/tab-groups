@@ -43,7 +43,7 @@
     "rimraf": "^2.6.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.0",
-    "uglifyjs-webpack-plugin": "^0.4.6",
+    "uglifyjs-webpack-plugin": "^1.0.0-rc.0",
     "uuid": "^3.1.0",
     "webpack": "^3.6.0"
   },
