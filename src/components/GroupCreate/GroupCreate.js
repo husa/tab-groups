@@ -100,11 +100,12 @@ class GroupCreate extends React.Component {
             type="primary"
             disabled={this.state.name === ''}
             onClick={this.onSaveClick}>
-              <Icon name="checkmark" />
-              Save
+            <Icon name="checkmark" />
+            Save
           </Button>
           <Button
             type="secondary"
+            outline
             onClick={this.onCancelClick}>
             <Icon name="close" />
             Cancel

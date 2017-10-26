@@ -102,6 +102,7 @@ class Actions extends React.Component {
         </Button>
         <Button
           type="secondary"
+          outline
           onClick={this.onAddTabCancelClick}>
           <Icon name="close" />
           Cancel

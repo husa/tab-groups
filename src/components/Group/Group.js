@@ -97,8 +97,18 @@ class Group extends React.Component {
           <div className={classNames('group__actions', {
             'group__actions--disabled': group.tabs.length === 0
           })}>
-            <Button onClick={this.onOpenClick}>Open</Button>
-            <Button onClick={this.onOpenInNewWindowClick}>Open in New Window</Button>
+            <Button
+              type="primary"
+              outline
+              onClick={this.onOpenClick}>
+              Open
+            </Button>
+            <Button
+              onClick={this.onOpenInNewWindowClick}
+              outline
+              type="primary">
+              Open in New Window
+            </Button>
           </div>
         </div>
 

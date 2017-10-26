@@ -95,4 +95,23 @@
       border-color: $color-secondary-dark;
     }
   }
+
+  &--outline#{&}--primary {
+    background: none;
+    border: solid 1px transparent;
+    color: $color-primary;
+    fill: $color-primary;
+
+    &:hover {
+      color: $color-primary-light;
+      fill: $color-primary-light;
+      border-color: $color-primary-light;
+    }
+
+    &:active {
+      color: $color-primary-dark;
+      fill: $color-primary-dark;
+      border-color: $color-primary-dark;
+    }
+  }
 }
