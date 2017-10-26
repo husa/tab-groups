@@ -17,14 +17,10 @@ export const createNewGroup = group => {
     id: uuid()
   }));
 
-  const groupObj = {id, name, tabs};
-
-  groupService.saveGroup(groupObj);
-
   return {
     type: CREATE_NEW_GROUP,
     payload: {
-      group: groupObj
+      group: {id, name, tabs}
     }
   };
 };
