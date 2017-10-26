@@ -19,6 +19,11 @@
     border-radius: $border-radius;
     overflow: hidden;
     cursor: pointer;
+    transition: border-color 100ms ease-out;
+
+    &:hover {
+      border-color: $color-primary;
+    }
   }
 
   &__label {
@@ -48,6 +53,7 @@
     border-top: none;
     padding: .5rem 0;
     z-index: $zindex-dropdown;
+    transition: border-color 100ms ease-out;
   }
 
   &__option {
@@ -58,10 +64,25 @@
     overflow: hidden;
     text-overflow: ellipsis;
     cursor: pointer;
+    transition: color 100ms ease-out;
+
+    &:hover {
+      color: $color-primary;
+    }
 
     &:last-child {
       border-bottom: none;
     }
+  }
+
+  &--open &__options {
+    border-color: $color-primary;
+  }
+
+  &--open &__content {
+    border-color: $color-primary;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 
   &--open &__icon {
