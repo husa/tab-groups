@@ -47,21 +47,27 @@ class Group extends React.Component {
 
   getTabs () {
     const {tabs} = this.props.group;
-    if (!tabs.length) {
-      return (
-        <div className="group__tabs group__tabs--empty">
-          Group does not have any tabs
-        </div>
-      );
-    }
 
     const tabsClassName = classNames('group__tabs', {
-      'group__tabs--open': this.state.showTabs
+      'group__tabs--open': this.state.showTabs,
+      'group__tabs--empty': tabs.length === 0
     });
 
     const tabsStyle = {
       maxHeight: this.state.showTabs ? this.tabsContent.scrollHeight : 0
     };
+    let content;
+    if (!tabs.length) {
+      content = (
+        <div className="group__tabs__empty-label">
+          Group does not have any tabs
+        </div>
+      );
+    } else {
+      content = (
+        <Tabs tabs={tabs} onRemove={this.onTabRemove} showActions={true} />
+      );
+    }
 
     return (
       <div
@@ -72,7 +78,7 @@ class Group extends React.Component {
             this.tabsContent = el;
           }
         }}>
-        <Tabs tabs={tabs} onRemove={this.onTabRemove} showActions={true} />
+        {content}
       </div>
     );
   }

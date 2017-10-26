@@ -51,7 +51,7 @@
     overflow: hidden;
     transition: max-height 300ms ease-out;
 
-    &--empty {
+    &__empty-label {
       padding: 1rem;
       font-weight: 300;
       font-style: italic;
