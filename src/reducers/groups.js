@@ -5,7 +5,9 @@ import {
 } from '../actions/groups';
 
 
-const getInitialState = () => ({});
+const getInitialState = () => ({
+  ids: []
+});
 
 const groups = (state = getInitialState(), action) => {
   switch (action.type) {
@@ -13,6 +15,7 @@ const groups = (state = getInitialState(), action) => {
       const {group} = action.payload;
       return {
         ...state,
+        ids: state.ids.concat([group.id]),
         [group.id]: group
       };
     }

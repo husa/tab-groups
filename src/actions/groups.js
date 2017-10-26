@@ -1,5 +1,8 @@
 import uuid from 'uuid/v4';
 
+import groupService from '../services/groups';
+
+
 export const CREATE_NEW_GROUP = 'CREATE_NEW_GROUP';
 export const RENAME_GROUP = 'RENAME_GROUP';
 export const DELETE_GROUP = 'DELETE_GROUP';
@@ -14,14 +17,14 @@ export const createNewGroup = group => {
     id: uuid()
   }));
 
+  const groupObj = {id, name, tabs};
+
+  groupService.saveGroup(groupObj);
+
   return {
     type: CREATE_NEW_GROUP,
     payload: {
-      group: {
-        id,
-        name,
-        tabs
-      }
+      group: groupObj
     }
   };
 };

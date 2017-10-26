@@ -1,7 +1,11 @@
-import storage from '../services/storage';
+import groupService from '../services/groups';
 
-import {CREATE_NEW_GROUP} from '../actions/groups';
-import {selectGroups} from '../selectors';
+import {
+  CREATE_NEW_GROUP
+} from '../actions/groups';
+import {
+  selectGroupIds
+} from '../selectors';
 
 
 const actions = [
@@ -12,8 +16,8 @@ const storageMiddleware = store => next => action => {
   const result = next(action);
   if (!actions.includes(action.type)) return result;
   const state = store.getState();
-  const groups = selectGroups(state);
-  storage.save('groups', groups);
+  const groupIds = selectGroupIds(state);
+  groupService.saveGroupIds(groupIds);
   return result;
 };
 

@@ -137,7 +137,7 @@ class Actions extends React.Component {
 }
 
 Actions.propTypes = {
-  groups: PropTypes.object.isRequired,
+  groups: PropTypes.array.isRequired,
 
   createNewGroup: PropTypes.func.isRequired,
   addTabToGroup: PropTypes.func.isRequired

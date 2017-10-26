@@ -6,7 +6,7 @@ import Group from '../Group/Group';
 
 
 const Groups = ({groups, ...rest}) => {
-  const list = Object.values(groups).map(group => (
+  const list = groups.map(group => (
     <Group key={group.id} group={group} {...rest} />
   ));
 
