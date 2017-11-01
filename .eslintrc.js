@@ -14,8 +14,10 @@ module.exports = {
     "ENV": false
   },
   "plugins": [
-    "react"
+    "react",
+    "flowtype"
   ],
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
