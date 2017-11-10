@@ -1,3 +1,5 @@
+// @flow
+
 import groups from './groups';
 import user from './user';
 

@@ -1,4 +1,4 @@
-import groupService from '../services/groups';
+import groupsService from '../services/groups';
 
 import {
   selectGroupIds,
@@ -18,12 +18,12 @@ const syncGroupIdsActions = [
 
 const syncGroupIds = state => {
   const groupIds = selectGroupIds(state);
-  return groupService.saveGroupIds(groupIds);
+  return groupsService.saveGroupIds(groupIds);
 };
 
 const syncGroup = (state, id) => {
   const group = selectGroup(state, id);
-  return groupService.saveGroup(group);
+  return groupsService.saveGroup(group);
 };
 
 const storageMiddleware = store => next => action => {

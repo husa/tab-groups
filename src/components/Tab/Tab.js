@@ -1,21 +1,39 @@
+// @flow
+
 import './Tab.scss';
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import autobind from 'autobindr';
 
 import Button from '../Button/Button';
 import Icon from '../Icon/Icon';
 import Checkbox from '../Checkbox/Checkbox';
 
+import type {Tab as TabT} from '../../types';
 
-class Tab extends React.Component {
+
+type Props = {
+  tab: TabT,
+  showActions?: boolean,
+  showCheckbox?: boolean,
+  checked?: boolean,
+  onCheck?: (e: SyntheticInputEvent<>) => void,
+  onRemove?: (tab: TabT) => void
+};
+
+class Tab extends React.Component<Props> {
+  static defaultProps = {
+    showActions: false,
+    showCheckbox: false
+  }
+
   constructor () {
     super();
     autobind(this);
   }
 
   onRemoveClick () {
+    if (typeof this.props.onRemove !== 'function') return;
     this.props.onRemove(this.props.tab);
   }
 
@@ -77,18 +95,5 @@ class Tab extends React.Component {
     );
   }
 }
-
-Tab.propTypes = {
-  tab: PropTypes.object.isRequired,
-  showActions: PropTypes.bool,
-  showCheckbox: PropTypes.bool,
-  checked: PropTypes.bool,
-  onCheck: PropTypes.func
-};
-
-Tab.defaultProps = {
-  showActions: false,
-  showCheckbox: false
-};
 
 export default Tab;

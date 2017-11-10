@@ -1,9 +1,14 @@
-const getInitialState = () => ({
+// @flow
+
+type State = {|
+  +id: ?string
+|};
+
+const getInitialState = (): State => ({
   id: null
 });
 
-const user = (state = getInitialState()) => {
-  return state;
-};
+// User id is pre-populated in entry point
+const user = (state: State = getInitialState()): State => state;
 
 export default user;

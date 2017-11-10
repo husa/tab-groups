@@ -1,15 +1,34 @@
+// @flow
+
 import {
   CREATE_NEW_GROUP,
   ADD_TAB_TO_GROUP,
-  DELETE_TAB
+  DELETE_TAB,
+
+  type CreateGroupAction,
+  type AddTabToGroupAction,
+  type DeleteTabAction
 } from '../actions/groups';
 
+import type {Group, GroupId} from '../types';
 
-const getInitialState = () => ({
+
+type State = {
+  +ids: Array<GroupId>,
+  +[id: GroupId]: Group
+};
+
+type Actions =
+  | CreateGroupAction
+  | AddTabToGroupAction
+  | DeleteTabAction;
+
+
+const getInitialState = (): State => ({
   ids: []
 });
 
-const groups = (state = getInitialState(), action) => {
+const groups = (state: State = getInitialState(), action: Actions): State => {
   switch (action.type) {
     case CREATE_NEW_GROUP: {
       const {group} = action.payload;

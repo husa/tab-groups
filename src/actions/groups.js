@@ -1,21 +1,23 @@
+// @flow
+
 import uuid from 'uuid/v4';
 
-import groupService from '../services/groups';
+import type {Action, Tab, Group, GroupId, UnknownGroup} from '../types';
+
+export const CREATE_NEW_GROUP: 'CREATE_NEW_GROUP' = 'CREATE_NEW_GROUP';
+export const RENAME_GROUP: 'RENAME_GROUP' = 'RENAME_GROUP';
+export const DELETE_GROUP: 'DELETE_GROUP' = 'DELETE_GROUP';
+export const ADD_TAB_TO_GROUP: 'ADD_TAB_TO_GROUP' = 'ADD_TAB_TO_GROUP';
+export const DELETE_TAB: 'DELETE_TAB' = 'DELETE_TAB';
 
 
-export const CREATE_NEW_GROUP = 'CREATE_NEW_GROUP';
-export const RENAME_GROUP = 'RENAME_GROUP';
-export const DELETE_GROUP = 'DELETE_GROUP';
-export const ADD_TAB_TO_GROUP = 'ADD_TAB_TO_GROUP';
-export const DELETE_TAB = 'DELETE_TAB';
+export type CreateGroupAction = Action<typeof CREATE_NEW_GROUP, {
+  group: Group
+}>;
 
-export const createNewGroup = group => {
+export const createNewGroup = (group: UnknownGroup): CreateGroupAction => {
   const id = uuid();
-  const {name} = group;
-  const tabs = group.tabs.map(tab => ({
-    ...tab,
-    id: uuid()
-  }));
+  const {name, tabs} = group;
 
   return {
     type: CREATE_NEW_GROUP,
@@ -25,7 +27,12 @@ export const createNewGroup = group => {
   };
 };
 
-export const renameGroup = (id, name) => ({
+export type RenameGroupAction = Action<typeof RENAME_GROUP, {
+  id: GroupId,
+  name: string
+}>;
+
+export const renameGroup = (id: string, name: string): RenameGroupAction => ({
   type: RENAME_GROUP,
   payload: {
     id,
@@ -33,14 +40,23 @@ export const renameGroup = (id, name) => ({
   }
 });
 
-export const deleteGroup = id => ({
+export type DeleteGroupAction = Action<typeof DELETE_GROUP, {
+  id: GroupId
+}>;
+
+export const deleteGroup = (id: string): DeleteGroupAction => ({
   type: DELETE_GROUP,
   payload: {
     id
   }
 });
 
-export const addTabToGroup = (groupId, tab) => ({
+export type AddTabToGroupAction = Action<typeof ADD_TAB_TO_GROUP, {
+  groupId: GroupId,
+  tab: Tab
+}>;
+
+export const addTabToGroup = (groupId: GroupId, tab: Tab): AddTabToGroupAction => ({
   type: ADD_TAB_TO_GROUP,
   payload: {
     groupId,
@@ -48,7 +64,12 @@ export const addTabToGroup = (groupId, tab) => ({
   }
 });
 
-export const deleteTab = (groupId, tabId) => ({
+export type DeleteTabAction = Action<typeof DELETE_TAB, {
+  groupId: GroupId,
+  tabId: string
+}>;
+
+export const deleteTab = (groupId: string, tabId: string): DeleteTabAction => ({
   type: DELETE_TAB,
   payload: {
     groupId,

@@ -1,28 +1,47 @@
+// @flow
+
 import './Actions.scss';
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import autobind from 'autobindr';
 
 import Button from '../Button/Button';
 import Icon from '../Icon/Icon';
 import GroupCreate from '../GroupCreate/GroupCreate';
 import GroupSelector from '../GroupSelector/GroupSelector';
-
 import tabs from '../../services/tabs';
+import type {Group, UnknownGroup, Tab} from '../../types';
 
-class Actions extends React.Component {
+
+type Props = {
+  groups: Array<Group>,
+  createNewGroup (group: UnknownGroup): void,
+  addTabToGroup (groupId: string, tab: Tab): void
+};
+
+type State = {
+  showNewGroupForm: boolean,
+  showAddTabForm: boolean,
+
+  newGroupName: string,
+  newGroupSaveOpenTabs: boolean,
+
+  addTabGroup: ?Group
+};
+
+class Actions extends React.Component<Props, State> {
+  state = {
+    showNewGroupForm: false,
+    showAddTabForm: false,
+
+    newGroupName: '',
+    newGroupSaveOpenTabs: false,
+
+    addTabGroup: null
+  }
+
   constructor () {
     super();
-    this.state = {
-      showNewGroupForm: false,
-      showAddTabForm: false,
-
-      newGroupName: '',
-      newGroupSaveOpenTabs: false,
-
-      addTabGroup: null
-    };
     autobind(this);
   }
 
@@ -36,13 +55,9 @@ class Actions extends React.Component {
 
   onAddTabSaveClick () {
     const {addTabGroup} = this.state;
+    if (!addTabGroup) return;
     tabs.getCurrent().then(tab => {
-      this.props.addTabToGroup(addTabGroup.id, {
-        title: tab.title,
-        url: tab.url,
-        favIconUrl: tab.favIconUrl,
-        pinned: tab.pinned
-      });
+      this.props.addTabToGroup(addTabGroup.id, tab);
     });
     this.setState({showAddTabForm: false, addTabGroup: null});
   }
@@ -51,16 +66,16 @@ class Actions extends React.Component {
     this.setState({showAddTabForm: false});
   }
 
-  onAddTabGroupSelect (group) {
+  onAddTabGroupSelect (group: Group) {
     this.setState({addTabGroup: group});
   }
 
-  onNewGroupChange (e) {
+  onNewGroupChange (e: SyntheticInputEvent<HTMLInputElement>) {
     const {value} = e.target;
     this.setState({newGroupName: value});
   }
 
-  onNewGroupSave (group) {
+  onNewGroupSave (group: UnknownGroup) {
     this.props.createNewGroup(group);
     this.setState({
       newGroupName: '',
@@ -91,7 +106,7 @@ class Actions extends React.Component {
     return (
       <div className="actions__add-tab">
         <GroupSelector
-          groups={Object.values(this.props.groups)}
+          groups={this.props.groups}
           onSelect={this.onAddTabGroupSelect} />
         <Button
           type="primary"
@@ -136,14 +151,5 @@ class Actions extends React.Component {
     );
   }
 }
-
-Actions.propTypes = {
-  groups: PropTypes.array.isRequired,
-
-  createNewGroup: PropTypes.func.isRequired,
-  addTabToGroup: PropTypes.func.isRequired
-};
-
-Actions.defaultProps = {};
 
 export default Actions;

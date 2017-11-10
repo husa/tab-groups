@@ -1,7 +1,8 @@
+// @flow
+
 import './GroupCreate.scss';
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import autobind from 'autobindr';
 import classNames from 'classnames';
 
@@ -13,9 +14,23 @@ import Checkbox from '../Checkbox/Checkbox';
 import Icon from '../Icon/Icon';
 import Tab from '../Tab/Tab';
 
+import type {Tab as TabT} from '../../types';
 
-class GroupCreate extends React.Component {
-  constructor (props) {
+type Props = {
+  name?: string,
+  onSave: ({name: string, tabs: Array<TabT>}) => void,
+  onCancel: () => void
+};
+
+type State = {
+  name: string,
+  includeOpened: boolean,
+  tabs: Array<TabT>,
+  checkedTabs: Array<string>
+};
+
+class GroupCreate extends React.Component<Props, State> {
+  constructor (props: Props) {
     super(props);
     this.state = {
       name: props.name || '',
@@ -33,11 +48,11 @@ class GroupCreate extends React.Component {
     });
   }
 
-  onChange (e) {
+  onChange (e: SyntheticInputEvent<>) {
     this.setState({name: e.target.value});
   }
 
-  onOpenedTabsChange (e) {
+  onOpenedTabsChange (e: SyntheticInputEvent<>) {
     this.setState({includeOpened: e.target.checked});
   }
 
@@ -46,13 +61,7 @@ class GroupCreate extends React.Component {
     let tabs = [];
     if (this.state.includeOpened) {
       tabs = this.state.tabs
-        .filter(({id}) => this.state.checkedTabs.includes(id))
-        .map(({title, url, favIconUrl, pinned}) => ({
-          title,
-          url,
-          favIconUrl,
-          pinned
-        }));
+        .filter(({id}) => this.state.checkedTabs.includes(id));
     }
     return this.props.onSave({
       name: this.state.name,
@@ -64,7 +73,7 @@ class GroupCreate extends React.Component {
     this.props.onCancel();
   }
 
-  onTabChecked (tab) {
+  onTabChecked (tab: TabT) {
     const {id} = tab;
     const {checkedTabs} = this.state;
     if (checkedTabs.includes(id)) {
@@ -83,7 +92,7 @@ class GroupCreate extends React.Component {
         tab={tab}
         showCheckbox={true}
         checked={this.state.checkedTabs.includes(tab.id)}
-        onCheck={this.onTabChecked.bind(this, tab)} />
+        onCheck={() => this.onTabChecked(tab)} />
     ));
   }
 
@@ -129,16 +138,5 @@ class GroupCreate extends React.Component {
     );
   }
 }
-
-
-// GroupCreate.propTypes = {
-//   name: PropTypes.string,
-//   onChange: PropTypes.func.isRequired,
-//   onSave: PropTypes.func.isRequired
-// };
-
-// GroupCreate.defaultProps = {
-//   name: ''
-// };
 
 export default GroupCreate;

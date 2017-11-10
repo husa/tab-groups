@@ -1,26 +1,35 @@
+// @flow
+
 import './GroupSelector.scss';
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import autobind from 'autobindr';
 import classNames from 'classnames';
 
 import Icon from '../Icon/Icon';
+import type {Group} from '../../types';
 
+type Props = {
+  groups: Array<Group>,
+  onSelect: (group: Group) => void
+};
+type State = {
+  selected: ?Group,
+  open: boolean
+};
 
-class GroupSelector extends React.Component {
+class GroupSelector extends React.Component<Props, State> {
+  state = {
+    selected: null,
+    open: false
+  }
+
   constructor () {
     super();
-    this.state = {
-      selected: {
-        id: null
-      },
-      open: false
-    };
     autobind(this);
   }
 
-  onSelect (group) {
+  onSelect (group: Group) {
     this.setState({selected: group, open: false});
     this.props.onSelect(group);
   }
@@ -31,7 +40,7 @@ class GroupSelector extends React.Component {
 
   getLabel () {
     const {selected} = this.state;
-    return selected.id ? selected.name : 'Select Group';
+    return selected ? selected.name : 'Select Group';
   }
 
   getGroupOptions () {
@@ -40,7 +49,7 @@ class GroupSelector extends React.Component {
       <div
         key={group.id}
         className={classNames('group-selector__option', {
-          'group-selector__option--selected': group.id === selected.id
+          'group-selector__option--selected': selected && group.id === selected.id
         })}
         onClick={this.onSelect.bind(this, group)}>
         {group.name}
@@ -66,12 +75,5 @@ class GroupSelector extends React.Component {
     );
   }
 }
-
-GroupSelector.propTypes = {
-  groups: PropTypes.array.isRequired,
-  onSelect: PropTypes.func.isRequired
-};
-
-GroupSelector.defaultProps = {};
 
 export default GroupSelector;

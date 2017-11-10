@@ -1,3 +1,4 @@
+// @flow
 
 import uuid from 'uuid/v4';
 
@@ -6,19 +7,26 @@ import {isEmpty} from '../utils';
 
 const USER_ID_KEY = 'user';
 
+type ID = string;
+
+type UserInfo = {
+  id: ID
+};
+
 class User {
-  ensureId () {
-    return storage.get(USER_ID_KEY).then(id => {
-      if (isEmpty(id)) return this.generateId();
-      return id;
+  ensureId (): Promise<string> {
+    return storage.get(USER_ID_KEY).then((user: UserInfo) => {
+      if (!isEmpty(user)) return user.id;
+      const id: ID = this.generateId();
+      return storage.set(USER_ID_KEY, id).then(() => id);
     });
   }
 
-  generateId () {
+  generateId (): ID {
     return uuid();
   }
 }
 
-const user = new User;
+const user: User = new User;
 
 export default user;

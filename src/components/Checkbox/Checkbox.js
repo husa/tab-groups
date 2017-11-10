@@ -1,11 +1,18 @@
+// @flow
+
 import './Checkbox.scss';
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import classNames from 'classnames';
 
 
-const Checkbox = ({children, className, inputClassName, ...props}) => (
+type Props = {
+  className?: string,
+  inputClassName?: string,
+  children?: React.Node
+};
+
+const Checkbox = ({children, className, inputClassName, ...props}: Props) => (
   <label className={classNames('checkbox', className)}>
     <input
       className={classNames('checkbox__input', inputClassName)}
@@ -16,15 +23,5 @@ const Checkbox = ({children, className, inputClassName, ...props}) => (
     </span>
   </label>
 );
-
-Checkbox.propTypes = {
-  className: PropTypes.string,
-  inputClassName: PropTypes.string
-};
-
-Checkbox.defaultProps = {
-  className: '',
-  inputClassName: ''
-};
 
 export default Checkbox;

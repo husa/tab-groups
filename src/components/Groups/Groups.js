@@ -1,11 +1,18 @@
+// @flow
+
 import './Groups.scss';
 
 import React from 'react';
 
 import Group from '../Group/Group';
+import type {Group as GroupT} from '../../types';
 
+type Props = {|
+  groups: Array<GroupT>,
+  onTabRemove: (groupId: string, tabId: string) => void
+|};
 
-const Groups = ({groups, ...rest}) => {
+const Groups = ({groups, ...rest}: Props) => {
   const list = groups.map(group => (
     <Group key={group.id} group={group} {...rest} />
   ));

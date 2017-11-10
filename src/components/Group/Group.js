@@ -1,6 +1,8 @@
+// @flow
+
 import './Group.scss';
 
-import React from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import autobind from 'autobindr';
 
@@ -8,30 +10,41 @@ import tabsService from '../../services/tabs';
 import Tabs from '../Tabs/Tabs';
 import Button from '../Button/Button';
 import Icon from '../Icon/Icon';
+import type {Group as GroupT, Tab} from '../../types';
 
 
-class Group extends React.Component {
+type Props = {
+  group: GroupT,
+  onTabRemove: (groupId: string, tabId: string) => void
+};
+
+type State = {
+  showTabs: boolean
+};
+
+class Group extends React.Component<Props, State> {
+  state = {
+    showTabs: false
+  }
+  tabsContent: ?HTMLElement = null
+
   constructor () {
     super();
-    this.state = {
-      showTabs: false
-    };
     autobind(this);
-    this.tabsContent = null;
   }
 
   onHeaderClick () {
     this.setState(state => ({showTabs: !state.showTabs}));
   }
 
-  onOpenClick (e) {
+  onOpenClick (e: SyntheticMouseEvent<>) {
     e.preventDefault();
     e.stopPropagation();
     const {tabs} = this.props.group;
     tabsService.open(tabs);
   }
 
-  onOpenInNewWindowClick (e) {
+  onOpenInNewWindowClick (e: SyntheticMouseEvent<>) {
     e.preventDefault();
     e.stopPropagation();
     const {tabs} = this.props.group;
@@ -40,7 +53,7 @@ class Group extends React.Component {
     });
   }
 
-  onTabRemove (tab) {
+  onTabRemove (tab: Tab) {
     const {group} = this.props;
     this.props.onTabRemove(group.id, tab.id);
   }
@@ -54,7 +67,7 @@ class Group extends React.Component {
     });
 
     const tabsStyle = {
-      maxHeight: this.state.showTabs ? this.tabsContent.scrollHeight : 0
+      maxHeight: this.state.showTabs && this.tabsContent ? this.tabsContent.scrollHeight : 0
     };
     let content;
     if (!tabs.length) {

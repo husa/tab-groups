@@ -1,3 +1,5 @@
+// @flow
+/* eslint no-console: 0 */
 import './main.scss';
 
 import React from 'react';
@@ -5,14 +7,15 @@ import {render} from 'react-dom';
 import {Provider} from 'react-redux';
 
 import createStore from './store';
-import groups from './services/groups';
+import groupsService from './services/groups';
 import user from './services/user';
 import App from './layout/App/App';
+
 
 const start = performance.now();
 
 Promise.all([
-  groups.getAll(),
+  groupsService.getAll(),
   user.ensureId()
   // load saved data
 ]).then(([groups, userId]) => {
@@ -20,13 +23,16 @@ Promise.all([
     user: {id: userId},
     groups
   };
-  console.log(groups);
   return createStore(initialState);
 }).then(store => Promise.all([
   store
+  // possible fix for chrome
+  // https://bugs.chromium.org/p/chromium/issues/detail?id=428044
+  // new Promise(res => setTimeout(res, 150))
   // dispatch initial actions
 ])).then(([store]) => {
   const rootEl = document.querySelector('#root');
+  if (!rootEl) throw new Error('Can\'t find #root');
   return render((
     <Provider store={store}>
       <App />

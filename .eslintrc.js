@@ -3,7 +3,8 @@ module.exports = {
   "extends": [
     'eslint:recommended',
     '@eleks/eleks',
-    'plugin:react/recommended'
+    'plugin:react/recommended',
+    'plugin:flowtype/recommended'
   ],
   "env": {
     "browser": true,
@@ -45,7 +46,7 @@ module.exports = {
     ],
     "react/jsx-curly-spacing": [2, 'never'],
     "react/jsx-equals-spacing": [2, 'never'],
-    "react/jsx-first-prop-new-line": [2, 'multiline'],
+    "react/jsx-first-prop-new-line": [2, 'multiline-multiprop'],
     "react/jsx-indent": [2, 2],
     "react/jsx-indent-props": [2, 2],
     "react/jsx-key": 2,
