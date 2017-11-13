@@ -7,13 +7,16 @@ import {
 
 import {
   CREATE_NEW_GROUP,
+  RENAME_GROUP,
+  DELETE_GROUP,
   ADD_TAB_TO_GROUP,
   DELETE_TAB
 } from '../actions/groups';
 
 
 const syncGroupIdsActions = [
-  CREATE_NEW_GROUP
+  CREATE_NEW_GROUP,
+  DELETE_GROUP
 ];
 
 const syncGroupIds = state => {
@@ -37,9 +40,17 @@ const storageMiddleware = store => next => action => {
     syncGroup(state, id);
   }
 
-  if (action.type === ADD_TAB_TO_GROUP || action.type === DELETE_TAB) {
+  if (action.type === ADD_TAB_TO_GROUP
+    || action.type === DELETE_TAB
+    || action.type === RENAME_GROUP
+  ) {
     const id = action.payload.groupId;
     syncGroup(state, id);
+  }
+
+  if (action.type === DELETE_GROUP) {
+    const id = action.payload.groupId;
+    groupsService.removeGroup(id);
   }
 
   if (syncGroupIdsActions.includes(action.type)) {

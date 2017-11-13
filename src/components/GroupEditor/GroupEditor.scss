@@ -1,0 +1,14 @@
+.group-editor {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+
+  .input {
+    flex: 0 1 100%;
+  }
+
+  .button {
+    flex: 0 0 auto;
+  }
+}

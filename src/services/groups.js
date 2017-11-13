@@ -6,7 +6,10 @@ import type {Group, GroupId} from '../types';
 
 const GROUPS_KEY = 'groupIds';
 
+// 123 -> group-123
 const toGroupId = (id: string): string => `group-${id}`;
+
+// group-123 -> 123
 const fromGroupID = (str: string): string => str.replace('group-', '');
 
 class Groups {
@@ -33,6 +36,10 @@ class Groups {
 
   saveGroupIds (ids: Array<GroupId>): Promise<void> {
     return storage.set(GROUPS_KEY, ids);
+  }
+
+  removeGroup (id: string): Promise<void> {
+    return storage.remove(toGroupId(id));
   }
 }
 

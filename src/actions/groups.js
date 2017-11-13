@@ -28,26 +28,26 @@ export const createNewGroup = (group: UnknownGroup): CreateGroupAction => {
 };
 
 export type RenameGroupAction = Action<typeof RENAME_GROUP, {
-  id: GroupId,
+  groupId: GroupId,
   name: string
 }>;
 
-export const renameGroup = (id: string, name: string): RenameGroupAction => ({
+export const renameGroup = (groupId: string, name: string): RenameGroupAction => ({
   type: RENAME_GROUP,
   payload: {
-    id,
+    groupId,
     name
   }
 });
 
 export type DeleteGroupAction = Action<typeof DELETE_GROUP, {
-  id: GroupId
+  groupId: GroupId
 }>;
 
-export const deleteGroup = (id: string): DeleteGroupAction => ({
+export const deleteGroup = (groupId: string): DeleteGroupAction => ({
   type: DELETE_GROUP,
   payload: {
-    id
+    groupId
   }
 });
 

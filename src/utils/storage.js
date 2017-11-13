@@ -14,6 +14,12 @@ class Storage {
       chrome.storage.sync.get(key, res);
     });
   }
+
+  remove (key: string): Promise<void> {
+    return new Promise(res => {
+      chrome.storage.sync.remove(key, res);
+    });
+  }
 }
 
 const storage: Storage = new Storage;

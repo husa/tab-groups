@@ -10,11 +10,18 @@
 
   $s: &;
 
-  &--open, &:hover {
+  &--open {
     #{$s}__expand-icon, #{$s}__name {
-    color: $color-primary;
-    fill: $color-primary;
+      color: $color-primary;
+      fill: $color-primary;
+    }
   }
+
+  &:hover {
+    #{$s}__expand-icon {
+      color: $color-primary;
+      fill: $color-primary;
+    }
   }
 
   &__header {
@@ -33,10 +40,40 @@
     flex: 0 1 100%;
     overflow: hidden;
     white-space: nowrap;
-    text-overflow: ellipsis;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
     margin-left: .5rem;
     min-width: 150px;
     transition: color 100ms ease-out;
+
+    &__label {
+      flex: 0 1 auto;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &__edit {
+      flex: 0 1 auto;
+
+      .icon {
+        width: 1rem;
+        height: 1rem;
+        margin: 0 5px;
+        fill: $text-color-muted;
+      }
+
+      &:hover {
+        cursor: pointer;
+
+        .icon {
+          fill: $color-primary;
+        }
+      }
+    }
   }
 
   &__actions {

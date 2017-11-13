@@ -15,7 +15,8 @@ import type {Group as GroupT, Tab} from '../../types';
 
 type Props = {
   group: GroupT,
-  onTabRemove: (groupId: string, tabId: string) => void
+  onTabRemove: (groupId: string, tabId: string) => void,
+  onGroupEdit: (group: GroupT) => void
 };
 
 type State = {
@@ -56,6 +57,12 @@ class Group extends React.Component<Props, State> {
   onTabRemove (tab: Tab) {
     const {group} = this.props;
     this.props.onTabRemove(group.id, tab.id);
+  }
+
+  onEditClick (e: SyntheticMouseEvent<>) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.props.onGroupEdit(this.props.group);
   }
 
   getTabs () {
@@ -106,7 +113,14 @@ class Group extends React.Component<Props, State> {
           <div className="group__expand-icon">
             <Icon name="chevron-down" />
           </div>
-          <div className="group__name">{group.name}</div>
+          <div className="group__name">
+            <div className="group__name__label">
+              {group.name}
+            </div>
+            <div className="group__name__edit" onClick={this.onEditClick}>
+              <Icon name="pencil" />
+            </div>
+          </div>
           <div className={classNames('group__actions', {
             'group__actions--disabled': group.tabs.length === 0
           })}>

@@ -29,7 +29,7 @@ class Tabs {
     });
   }
 
-  open (tabs: Array<Tab>, {newWindow = false}: {newWindow: boolean} = {}): Promise<*> {
+  open (tabs: Array<Tab>, {newWindow = false}: {newWindow: boolean} = {}): Promise<void> {
     return new Promise(resolve => {
       if (newWindow) {
         chrome.windows.create({}, (chromeWindow: ?chrome$Window) => {

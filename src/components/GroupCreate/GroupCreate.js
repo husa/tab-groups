@@ -8,22 +8,18 @@ import classNames from 'classnames';
 
 import tabsService from '../../services/tabs';
 
-import Button from '../Button/Button';
-import Input from '../Input/Input';
 import Checkbox from '../Checkbox/Checkbox';
-import Icon from '../Icon/Icon';
 import Tab from '../Tab/Tab';
+import GroupEditor from '../GroupEditor/GroupEditor';
 
 import type {Tab as TabT} from '../../types';
 
 type Props = {
-  name?: string,
   onSave: ({name: string, tabs: Array<TabT>}) => void,
   onCancel: () => void
 };
 
 type State = {
-  name: string,
   includeOpened: boolean,
   tabs: Array<TabT>,
   checkedTabs: Array<string>
@@ -33,7 +29,6 @@ class GroupCreate extends React.Component<Props, State> {
   constructor (props: Props) {
     super(props);
     this.state = {
-      name: props.name || '',
       includeOpened: true,
       tabs: [],
       checkedTabs: []
@@ -48,28 +43,21 @@ class GroupCreate extends React.Component<Props, State> {
     });
   }
 
-  onChange (e: SyntheticInputEvent<>) {
-    this.setState({name: e.target.value});
-  }
-
   onOpenedTabsChange (e: SyntheticInputEvent<>) {
     this.setState({includeOpened: e.target.checked});
   }
 
-  onSaveClick () {
-    if (!this.state.name) return null;
+  onSave (name: ?string) {
+    if (!name) return null;
     let tabs = [];
     if (this.state.includeOpened) {
       tabs = this.state.tabs
         .filter(({id}) => this.state.checkedTabs.includes(id));
     }
-    return this.props.onSave({
-      name: this.state.name,
-      tabs
-    });
+    return this.props.onSave({name, tabs});
   }
 
-  onCancelClick () {
+  onCancel () {
     this.props.onCancel();
   }
 
@@ -99,27 +87,10 @@ class GroupCreate extends React.Component<Props, State> {
   render () {
     return (
       <div className="group-create">
-        <div className="group-create__actions">
-          <Input
-            className="group-create__input"
-            placeholder="Group Name"
-            value={this.state.name}
-            onChange={this.onChange} />
-          <Button
-            type="primary"
-            disabled={this.state.name === ''}
-            onClick={this.onSaveClick}>
-            <Icon name="checkmark" />
-            Save
-          </Button>
-          <Button
-            type="secondary"
-            outline
-            onClick={this.onCancelClick}>
-            <Icon name="close" />
-            Cancel
-          </Button>
-        </div>
+        <GroupEditor
+          name=""
+          onSave={this.onSave}
+          onCancel={this.onCancel} />
 
         <div className="group-create__tabs-check">
           <Checkbox

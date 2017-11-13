@@ -2,10 +2,14 @@
 
 import {
   CREATE_NEW_GROUP,
+  RENAME_GROUP,
+  DELETE_GROUP,
   ADD_TAB_TO_GROUP,
   DELETE_TAB,
 
   type CreateGroupAction,
+  type RenameGroupAction,
+  type DeleteGroupAction,
   type AddTabToGroupAction,
   type DeleteTabAction
 } from '../actions/groups';
@@ -20,6 +24,8 @@ type State = {
 
 type Actions =
   | CreateGroupAction
+  | RenameGroupAction
+  | DeleteGroupAction
   | AddTabToGroupAction
   | DeleteTabAction;
 
@@ -37,6 +43,27 @@ const groups = (state: State = getInitialState(), action: Actions): State => {
         ids: state.ids.concat([group.id]),
         [group.id]: group
       };
+    }
+
+    case RENAME_GROUP: {
+      const {groupId, name} = action.payload;
+      return {
+        ...state,
+        [groupId]: {
+          ...state[groupId],
+          name
+        }
+      };
+    }
+
+    case DELETE_GROUP: {
+      const {groupId} = action.payload;
+      let newState = {
+        ...state,
+        ids: state.ids.filter(id => id !== groupId)
+      };
+      delete newState[groupId];
+      return newState;
     }
 
     case ADD_TAB_TO_GROUP: {
