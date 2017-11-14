@@ -11,7 +11,12 @@ Assets build
 ```
 yarn build
 ```
-Complete
+Build icons
+```
+cd src/assets/icons && node generate.js
+```
+
+Complete build
 ```
 yarn lint
 yarn test
