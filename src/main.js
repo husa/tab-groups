@@ -25,10 +25,10 @@ Promise.all([
   };
   return createStore(initialState);
 }).then(store => Promise.all([
-  store
+  store,
   // possible fix for chrome
   // https://bugs.chromium.org/p/chromium/issues/detail?id=428044
-  // new Promise(res => setTimeout(res, 150))
+  new Promise(res => setTimeout(res, 150))
   // dispatch initial actions
 ])).then(([store]) => {
   const rootEl = document.querySelector('#root');
