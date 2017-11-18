@@ -8,9 +8,10 @@ import React from 'react';
 
 const Header = () => (
   <div className="header">
-    <div className="header__title">
-      {lang.t('headerTitle')}
-    </div>
+    <img
+      className="header__title"
+      src="/assets/title.svg "
+      alt={lang.t('headerTitle')} />
   </div>
 );
 

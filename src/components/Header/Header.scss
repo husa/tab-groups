@@ -1,11 +1,9 @@
 @import '../../theme/vars';
 
 .header {
-  padding: .5rem 1rem;
-  border-bottom: solid 1px $grey-light;
+  padding: 1rem 1rem 0;
 
   &__title {
-    font-size: 1.5rem;
-    font-weight: 300;
+    height: 28px;
   }
 }
