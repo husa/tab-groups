@@ -6,8 +6,8 @@ import * as React from 'react';
 import autobind from 'autobindr';
 import classNames from 'classnames';
 
+import lang from '../../services/lang';
 import tabsService from '../../services/tabs';
-
 import Checkbox from '../Checkbox/Checkbox';
 import Tab from '../Tab/Tab';
 import GroupEditor from '../GroupEditor/GroupEditor';
@@ -96,7 +96,7 @@ class GroupCreate extends React.Component<Props, State> {
           <Checkbox
             checked={this.state.includeOpened}
             onChange={this.onOpenedTabsChange}>
-            Include open tabs
+            {lang.t('groupsIncludeOpenTabs')}
           </Checkbox>
         </div>
 

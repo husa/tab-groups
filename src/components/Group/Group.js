@@ -6,6 +6,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import autobind from 'autobindr';
 
+import lang from '../../services/lang';
 import tabsService from '../../services/tabs';
 import Tabs from '../Tabs/Tabs';
 import Button from '../Button/Button';
@@ -80,7 +81,7 @@ class Group extends React.Component<Props, State> {
     if (!tabs.length) {
       content = (
         <div className="group__tabs__empty-label">
-          Group does not have any tabs
+          {lang.t('groupNoTabs')}
         </div>
       );
     } else {
@@ -128,13 +129,13 @@ class Group extends React.Component<Props, State> {
               type="primary"
               outline
               onClick={this.onOpenClick}>
-              Open
+              {lang.t('groupOpen')}
             </Button>
             <Button
               onClick={this.onOpenInNewWindowClick}
               outline
               type="primary">
-              Open in New Window
+              {lang.t('groupOpenInNewWindow')}
             </Button>
           </div>
         </div>

@@ -10,7 +10,7 @@
     "start": "npm-run-all clear build:assets start:code",
     "start:code": "cross-env NODE_ENV=development webpack -w",
     "build": "npm-run-all clear build:*",
-    "build:assets": "cp -r ./src/assets ./src/manifest.json ./build",
+    "build:assets": "cp -r ./src/assets ./src/_locales ./src/manifest.json ./build",
     "build:code": "cross-env NODE_ENV=production webpack"
   },
   "repository": {

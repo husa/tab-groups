@@ -5,6 +5,7 @@ import './Tab.scss';
 import * as React from 'react';
 import autobind from 'autobindr';
 
+import lang from '../../services/lang';
 import Button from '../Button/Button';
 import Icon from '../Icon/Icon';
 import Checkbox from '../Checkbox/Checkbox';
@@ -68,7 +69,7 @@ class Tab extends React.Component<Props> {
           outline
           onClick={this.onRemoveClick}>
           <Icon name="delete-forever" />
-          Remove
+          {lang.t('generalRemove')}
         </Button>
       </div>
     );

@@ -5,6 +5,7 @@ import './Groups.scss';
 import * as React from 'react';
 import autobind from 'autobindr';
 
+import lang from '../../services/lang';
 import Group from '../Group/Group';
 import GroupEdit from '../GroupEdit/GroupEdit';
 import type {Group as GroupT} from '../../types';
@@ -78,10 +79,12 @@ class Groups extends React.Component<Props, State> {
     });
 
     if (!list.length) {
+      console.log(lang.t('groupsNoGroups').split('\n').join("\n"));
       return (
         <div className="groups groups--empty">
-          You don&#39;t have any groups yet. <br />
-          Go ahead, and create your first group.
+          {lang.t('groupsNoGroups').split('\n').map((str, i) => (
+            <span key={`${str}-${i}`}>{str}<br /></span>
+          ))}
         </div>
       );
     }

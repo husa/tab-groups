@@ -6,6 +6,7 @@ import * as React from 'react';
 import autobind from 'autobindr';
 import classNames from 'classnames';
 
+import lang from '../../services/lang';
 import Icon from '../Icon/Icon';
 import type {Group} from '../../types';
 
@@ -40,7 +41,7 @@ class GroupSelector extends React.Component<Props, State> {
 
   getLabel () {
     const {selected} = this.state;
-    return selected ? selected.name : 'Select Group';
+    return selected ? selected.name : lang.t('groupsSelectGroup');
   }
 
   getGroupOptions () {

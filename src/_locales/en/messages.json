@@ -1,0 +1,50 @@
+{
+  "extName": {
+    "message": "Tab Groups"
+  },
+  "extDescription": {
+    "message": "Organize your tabs into groups"
+  },
+  "generalSave": {
+    "message": "Save"
+  },
+  "generalCancel": {
+    "message": "Cancel"
+  },
+  "generalRemove": {
+    "message": "Remove"
+  },
+  "generalDelete": {
+    "message": "Delete"
+  },
+  "headerTitle": {
+    "message": "Tab Groups"
+  },
+  "actionsNewGroup": {
+    "message": "New Group"
+  },
+  "actionsAddTabToGroup": {
+    "message": "Add Tab to Group"
+  },
+  "groupsInputPlaceholder": {
+    "message": "Group Name"
+  },
+  "groupsNoGroups": {
+    "message": "You don't have any groups yet.\n Go ahead, and create your first group."
+  },
+  "groupsSelectGroup": {
+    "message": "Select Group"
+  },
+  "groupsIncludeOpenTabs": {
+    "message": "Include open tabs"
+  },
+  "groupNoTabs": {
+    "message": "Group does not have any tabs"
+  },
+  "groupOpen": {
+    "message": "Open"
+  },
+  "groupOpenInNewWindow": {
+    "message": "Open in New Window"
+  }
+}

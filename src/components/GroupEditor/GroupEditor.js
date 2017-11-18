@@ -5,6 +5,7 @@ import './GroupEditor.scss';
 import * as React from 'react';
 import autobind from 'autobindr';
 
+import lang from '../../services/lang';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 import Icon from '../Icon/Icon';
@@ -57,7 +58,7 @@ class GroupEditor extends React.Component<Props, State> {
       <div className="group-editor">
         <Input
           className="group-editor__input"
-          placeholder="Group Name"
+          placeholder={lang.t('groupsInputPlaceholder')}
           value={this.state.name}
           onChange={this.onChange} />
         <Button
@@ -65,19 +66,19 @@ class GroupEditor extends React.Component<Props, State> {
           disabled={this.state.name === ''}
           onClick={this.onSaveClick}>
           <Icon name="checkmark" />
-          Save
+          {lang.t('generalSave')}
         </Button>
         <Button
           type="secondary"
           onClick={this.onCancelClick}>
           <Icon name="close" />
-          Cancel
+          {lang.t('generalCancel')}
         </Button>
         {this.props.showDelete && <Button
           type="secondary"
           outline
           onClick={this.onDeleteClick}>
-          Delete
+          {lang.t('generalDelete')}
         </Button>}
       </div>
     );
