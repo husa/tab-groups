@@ -60,7 +60,8 @@ class GroupEditor extends React.Component<Props, State> {
           className="group-editor__input"
           placeholder={lang.t('groupsInputPlaceholder')}
           value={this.state.name}
-          onChange={this.onChange} />
+          onChange={this.onChange}
+          autoFocus />
         <Button
           type="primary"
           disabled={this.state.name === ''}
