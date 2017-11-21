@@ -71,6 +71,7 @@ class GroupEditor extends React.Component<Props, State> {
         </Button>
         <Button
           type="secondary"
+          outline
           onClick={this.onCancelClick}>
           <Icon name="close" />
           {lang.t('generalCancel')}
@@ -79,6 +80,7 @@ class GroupEditor extends React.Component<Props, State> {
           type="secondary"
           outline
           onClick={this.onDeleteClick}>
+          <Icon name="delete-forever" />
           {lang.t('generalDelete')}
         </Button>}
       </div>
