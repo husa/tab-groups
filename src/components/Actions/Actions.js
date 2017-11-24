@@ -134,13 +134,13 @@ class Actions extends React.Component<Props, State> {
           <Button
             type="primary"
             onClick={this.onCreateNewGroupClick}>
-            <Icon name="plus-box-multiple-outline" />
+            {/* <Icon name="plus-box-multiple-outline" /> */}
             {lang.t('actionsNewGroup')}
           </Button>
           <Button
             type="primary"
             onClick={this.onAddTabClick}>
-            <Icon name="plus-box-outline" />
+            {/* <Icon name="plus-box-outline" /> */}
             {lang.t('actionsAddTabToGroup')}
           </Button>
         </div>
