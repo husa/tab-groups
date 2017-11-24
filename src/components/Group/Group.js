@@ -118,6 +118,9 @@ class Group extends React.Component<Props, State> {
             <div className="group__name__label">
               {group.name}
             </div>
+            <div className="group__name__tab-count">
+              {group.tabs.length}
+            </div>
             <div className="group__name__edit" onClick={this.onEditClick}>
               <Icon name="pencil" />
             </div>
