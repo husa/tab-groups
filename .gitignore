@@ -1,5 +1,6 @@
 # Project specifics
 /build
+*.zip
 **/.DS_Store
 
 # Logs
@@ -60,4 +61,3 @@ typings/
 
 # dotenv environment variables file
 .env
-
