@@ -72,6 +72,7 @@ class Groups extends React.Component<Props, State> {
         <Group
           key={group.id}
           group={group}
+          showTabCountBadge={false}
           onGroupEdit={this.onGroupEditClick.bind(this, group)}
           onTabRemove={this.props.deleteTab}
           {...rest} />
@@ -79,7 +80,6 @@ class Groups extends React.Component<Props, State> {
     });
 
     if (!list.length) {
-      console.log(lang.t('groupsNoGroups').split('\n').join("\n"));
       return (
         <div className="groups groups--empty">
           {lang.t('groupsNoGroups').split('\n').map((str, i) => (

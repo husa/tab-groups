@@ -16,6 +16,7 @@ import type {Group as GroupT, Tab} from '../../types';
 
 type Props = {
   group: GroupT,
+  showTabCountBadge: boolean,
   onTabRemove: (groupId: string, tabId: string) => void,
   onGroupEdit: (group: GroupT) => void
 };
@@ -104,6 +105,16 @@ class Group extends React.Component<Props, State> {
     );
   }
 
+  getBadge () {
+    if (!this.props.showTabCountBadge) return null;
+    const {group} = this.props;
+    return (
+      <div className="group__name__tab-count">
+        {group.tabs.length}
+      </div>
+    );
+  }
+
   render () {
     const {group} = this.props;
     return (
@@ -118,9 +129,7 @@ class Group extends React.Component<Props, State> {
             <div className="group__name__label">
               {group.name}
             </div>
-            <div className="group__name__tab-count">
-              {group.tabs.length}
-            </div>
+            {this.getBadge()}
             <div className="group__name__edit" onClick={this.onEditClick}>
               <Icon name="pencil" />
             </div>
