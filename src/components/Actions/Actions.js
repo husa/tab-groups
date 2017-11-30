@@ -139,6 +139,7 @@ class Actions extends React.Component<Props, State> {
           </Button>
           <Button
             type="primary"
+            disabled={!this.props.groups.length}
             onClick={this.onAddTabClick}>
             {/* <Icon name="plus-box-outline" /> */}
             {lang.t('actionsAddTabToGroup')}
