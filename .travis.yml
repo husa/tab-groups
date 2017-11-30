@@ -15,3 +15,4 @@ deploy:
   script: yarn deploy
   on:
     branch: master
+    tags: true
