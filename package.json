@@ -14,7 +14,8 @@
     "build:assets": "cp -r ./src/assets ./src/_locales ./src/manifest.json ./build",
     "build:code": "cross-env NODE_ENV=production webpack",
     "zip": "bestzip build.zip ./build",
-    "release": "npm-run-all lint flow test build zip"
+    "release": "node bin/release.js",
+    "deploy": "node bin/deploy.js"
   },
   "repository": {
     "type": "git",
@@ -59,7 +60,9 @@
   "dependencies": {
     "babel-plugin-transform-class-properties": "^6.24.1",
     "bestzip": "^1.1.4",
+    "chrome-webstore-upload": "^0.2.1",
     "classnames": "^2.2.5",
+    "dotenv": "^4.0.0",
     "flow-typed": "^2.2.3",
     "prop-types": "^15.6.0",
     "react": "^16.1.1",
@@ -68,6 +71,7 @@
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
+    "simple-git": "^1.84.0",
     "svg2png": "^4.1.1"
   }
 }

@@ -1,10 +1,16 @@
 language: node_js
 node_js:
-- '8'
+  - '8'
 install:
-- yarn install
+  - yarn install
 script:
-- yarn lint
-- yarn flow
-- yarn test
-- yarn build
+  - yarn lint
+  - yarn flow
+  - yarn test
+  - yarn build
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: yarn deploy
+  on:
+    branch: master

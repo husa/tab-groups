@@ -21,6 +21,12 @@ cd src/assets/icons && node generate.js
 Complete build
 ```
 yarn lint
+yarn flow
 yarn test
 yarn build
+```
+
+Release
+```
+yarn release 1.2.3
 ```
