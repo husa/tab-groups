@@ -5,15 +5,16 @@
   "main": "index.js",
   "scripts": {
     "clear": "rimraf ./build && mkdirp ./build",
-    "lint": "eslint ./src && flow",
-    "test": "echo \"Error: no test specified\" && exit 0",
+    "lint": "eslint ./src",
+    "flow": "flow",
+    "test": "echo \"No tests yet\" && exit 0",
     "start": "npm-run-all clear build:assets start:code",
     "start:code": "cross-env NODE_ENV=development webpack -w",
     "build": "npm-run-all clear build:*",
     "build:assets": "cp -r ./src/assets ./src/_locales ./src/manifest.json ./build",
     "build:code": "cross-env NODE_ENV=production webpack",
     "zip": "bestzip build.zip ./build",
-    "release": "npm-run-all lint test build zip"
+    "release": "npm-run-all lint flow test build zip"
   },
   "repository": {
     "type": "git",
