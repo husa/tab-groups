@@ -17,5 +17,12 @@ const wsClient = webStore(chromeCredentials);
 const packageZip = fs.createReadStream(path.resolve('./build.zip'));
 
 wsClient.uploadExisting(packageZip).then(res => {
+  if (res.uploadState === 'FAILURE'
+    || res.uploadState === 'NOT_FOUND'
+    || res.itemError.length > 0) {
+      console.log('Package upload failed');
+      console.log(res);
+      process.exit(1);
+    }
   console.log(res);
 });
