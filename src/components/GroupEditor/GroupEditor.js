@@ -41,6 +41,10 @@ class GroupEditor extends React.Component<Props, State> {
     this.setState({name: e.target.value});
   }
 
+  onKeyPress (e: SyntheticInputEvent<>) {
+    if (e.key === 'Enter') this.props.onSave(this.state.name);
+  }
+
   onSaveClick () {
     this.props.onSave(this.state.name);
   }
@@ -61,6 +65,7 @@ class GroupEditor extends React.Component<Props, State> {
           placeholder={lang.t('groupsInputPlaceholder')}
           value={this.state.name}
           onChange={this.onChange}
+          onKeyPress={this.onKeyPress}
           autoFocus />
         <Button
           type="primary"
