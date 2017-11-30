@@ -1,5 +1,7 @@
 # tab-groups
 
+[![Build Status](https://travis-ci.org/husa/tab-groups.svg?branch=master)](https://travis-ci.org/husa/tab-groups)
+
 ## Local development
 
 ```
