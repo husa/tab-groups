@@ -2,7 +2,6 @@
 
 class Lang {
   t (key: string, ...args: Array<string>): string {
-
     // disable flow check for now
     // contribute to https://github.com/Shraymonks/flow-interfaces-chrome
     // to include chrome.i18n type annotations
