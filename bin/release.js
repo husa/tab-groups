@@ -12,24 +12,35 @@ Version parameter is either missing or invalid
 
 Example usage:
   node bin/release.js 1.2.3
-`
+`;
 
-const updateManifest = version => new Promise((resolve, reject) => {
-  fs.readFile(manifestPath, 'utf-8', (err, json) => {
-    if (err) return reject(err)
-    const manifest = JSON.parse(json);
-    manifest.version = version;
-    fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2), (err, res) => {
+const unknownErrorMessage = `
+😱  SHIT!!! 💩💩💩
+
+Something went wrong
+`;
+
+const updateManifest = version =>
+  new Promise((resolve, reject) => {
+    fs.readFile(manifestPath, 'utf-8', (err, json) => {
       if (err) return reject(err);
-      resolve(manifest);
-    })
-  })
-});
+      const manifest = JSON.parse(json);
+      manifest.version = version;
+      fs.writeFile(
+        manifestPath,
+        JSON.stringify(manifest, null, 2),
+        (err, res) => {
+          if (err) return reject(err);
+          resolve(manifest);
+        }
+      );
+    });
+  });
 
 (async () => {
   if (!versionRegEx.test(version)) {
     console.log(invalidVersionMessage);
-    return;
+    process.exit(1);
   }
 
   try {
@@ -42,7 +53,8 @@ const updateManifest = version => new Promise((resolve, reject) => {
     // git tag -a v#.#.# -m "Version #.#.#"
     await git.tag(['-a', `v${version}`, '-m', `Version v${version}`]);
   } catch (err) {
-    console.log('SHIT!!! Something bad happened');
+    console.log(unknownErrorMessage);
     console.log(err);
+    process.exit(1);
   }
 })();
