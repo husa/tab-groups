@@ -2,7 +2,6 @@
 
 .group {
   border-bottom: solid 1px $grey-light;
-  cursor: pointer;
 
   &:last-child {
     border-bottom: none;
@@ -30,6 +29,8 @@
     justify-content: space-between;
     align-items: center;
     padding: .5rem 1rem;
+    cursor: pointer;
+    user-select: none;
   }
 
   &__expand-icon {
