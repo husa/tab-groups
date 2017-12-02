@@ -62,7 +62,8 @@
   }
 
   &__title, &__url {
-    flex: 0 1 100%;
+    flex: 0 1 auto;
+    max-width: 50%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -71,7 +72,9 @@
   &__title {}
 
   &__url {
+    margin-left: .5rem;
     color: $text-color-muted;
+    opacity: .5;
   }
 
   &__actions {
