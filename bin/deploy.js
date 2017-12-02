@@ -28,15 +28,7 @@ const packageZip = fs.createReadStream(path.resolve('./build.zip'));
       throw upload;
     }
     const publish = await wsClient.publish('default', token);
-    console.log(publish);
-    // 'NOT_AUTHORIZED'
-    // 'INVALID_DEVELOPER'
-    // 'DEVELOPER_NO_OWNERSHIP'
-    // 'DEVELOPER_SUSPENDED'
-    // 'ITEM_NOT_FOUND'
-    // 'ITEM_PENDING_REVIEW'
-    // 'ITEM_TAKEN_DOWN'
-    // 'PUBLISHER_SUSPENDED'
+    if (!publish.status.includes('OK')) throw publish;
   } catch (err) {
     console.log(err);
     process.exit(1);
