@@ -30,3 +30,13 @@ Release
 ```
 yarn release 1.2.3
 ```
+
+CI Build
+```
+yarn lint
+yarn flow
+yarn test
+yarn build
+yarn zip
+yarn deploy
+```
