@@ -16,15 +16,29 @@ const wsClient = webStore(chromeCredentials);
 
 const packageZip = fs.createReadStream(path.resolve('./build.zip'));
 
-wsClient.uploadExisting(packageZip).then(res => {
-  if (
-    res.uploadState === 'FAILURE'
-    || res.uploadState === 'NOT_FOUND'
-    || (res.itemError && res.itemError.length > 0)
-  ) {
-    console.log('Package upload failed');
-    console.log(res);
+(async () => {
+  try {
+    const token = await wsClient.fetchToken();
+    const upload = await wsClient.uploadExisting(packageZip, token);
+    if (
+      upload.uploadState === 'FAILURE'
+      || upload.uploadState === 'NOT_FOUND'
+      || (upload.itemError && upload.itemError.length)
+    ) {
+      throw upload;
+    }
+    const publish = await wsClient.publish('default', token);
+    console.log(publish);
+    // 'NOT_AUTHORIZED'
+    // 'INVALID_DEVELOPER'
+    // 'DEVELOPER_NO_OWNERSHIP'
+    // 'DEVELOPER_SUSPENDED'
+    // 'ITEM_NOT_FOUND'
+    // 'ITEM_PENDING_REVIEW'
+    // 'ITEM_TAKEN_DOWN'
+    // 'PUBLISHER_SUSPENDED'
+  } catch (err) {
+    console.log(err);
     process.exit(1);
   }
-  console.log(res);
-});
+})();
