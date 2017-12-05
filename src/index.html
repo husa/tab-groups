@@ -32,5 +32,9 @@
       />
     </g>
   </svg>
+
+  <% if (htmlWebpackPlugin.options.ENV === 'production') { %>
+    <script async src="/analytics.js"></script>
+  <%}%>
 </body>
 </html>
