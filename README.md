@@ -15,7 +15,7 @@ yarn build
 ```
 Build icons
 ```
-cd src/assets/icons && node generate.js
+node assets/generate.js
 ```
 
 Complete build

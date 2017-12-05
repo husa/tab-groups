@@ -5,6 +5,9 @@
   "description": "__MSG_extDescription__",
   "default_locale": "en",
   "icons": {
+    "26": "assets/app-icons/icon-26.png",
+    "48": "assets/app-icons/icon-48.png",
+    "64": "assets/app-icons/icon-64.png",
     "128": "assets/app-icons/icon-128.png"
   },
   "browser_action": {
