@@ -1,0 +1,41 @@
+{
+  "generalSave": {
+    "message": "Сохранить"
+  },
+  "generalCancel": {
+    "message": "Отмена"
+  },
+  "generalRemove": {
+    "message": "Удалить"
+  },
+  "generalDelete": {
+    "message": "Удалить"
+  },
+  "actionsNewGroup": {
+    "message": "Новая группа"
+  },
+  "actionsAddTabToGroup": {
+    "message": "Добавить вкладку в группу"
+  },
+  "groupsInputPlaceholder": {
+    "message": "Имя Группы"
+  },
+  "groupsNoGroups": {
+    "message": "У вас пока нет групп. Создайте свою первую группу."
+  },
+  "groupsSelectGroup": {
+    "message": "Выбрать группу"
+  },
+  "groupsIncludeOpenTabs": {
+    "message": "Добавить открытые вкладки"
+  },
+  "groupNoTabs": {
+    "message": "У группы нет вкладок"
+  },
+  "groupOpen": {
+    "message": "Открыть"
+  },
+  "groupOpenInNewWindow": {
+    "message": "Открыть в новом окне"
+  }
+}
