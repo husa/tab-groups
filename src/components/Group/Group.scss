@@ -1,7 +1,7 @@
 @import '../../theme/vars';
 
 .group {
-  border-bottom: solid 1px $grey-light;
+  border-bottom: solid 1px $underline-color;
 
   &:last-child {
     border-bottom: none;
