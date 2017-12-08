@@ -8,7 +8,6 @@ import autobind from 'autobindr';
 import lang from '../../services/lang';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
-import Icon from '../Icon/Icon';
 
 
 type Props = {
@@ -72,24 +71,24 @@ class GroupEditor extends React.Component<Props, State> {
           flat
           compact
           disabled={this.state.name === ''}
+          icon="checkmark"
           onClick={this.onSaveClick}>
-          <Icon name="checkmark" />
           {lang.t('generalSave')}
         </Button>
         <Button
           type="secondary"
           flat
           compact
+          icon="close"
           onClick={this.onCancelClick}>
-          <Icon name="close" />
           {lang.t('generalCancel')}
         </Button>
         {this.props.showDelete && <Button
           type="secondary"
           flat
           compact
+          icon="delete-forever"
           onClick={this.onDeleteClick}>
-          <Icon name="delete-forever" />
           {lang.t('generalDelete')}
         </Button>}
       </div>

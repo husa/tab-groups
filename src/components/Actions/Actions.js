@@ -7,7 +7,6 @@ import autobind from 'autobindr';
 
 import lang from '../../services/lang';
 import Button from '../Button/Button';
-import Icon from '../Icon/Icon';
 import GroupCreate from '../GroupCreate/GroupCreate';
 import GroupSelector from '../GroupSelector/GroupSelector';
 import tabs from '../../services/tabs';
@@ -112,15 +111,15 @@ class Actions extends React.Component<Props, State> {
         <Button
           type="primary"
           disabled={this.state.addTabGroup === null}
+          icon="checkmark"
           onClick={this.onAddTabSaveClick}>
-          <Icon name="checkmark" />
           {lang.t('generalSave')}
         </Button>
         <Button
           type="secondary"
-          outline
+          flat
+          icon="close"
           onClick={this.onAddTabCancelClick}>
-          <Icon name="close" />
           {lang.t('generalCancel')}
         </Button>
       </div>
