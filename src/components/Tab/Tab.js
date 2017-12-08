@@ -7,7 +7,6 @@ import autobind from 'autobindr';
 
 import lang from '../../services/lang';
 import Button from '../Button/Button';
-import Icon from '../Icon/Icon';
 import Checkbox from '../Checkbox/Checkbox';
 
 import type {Tab as TabT} from '../../types';
@@ -67,8 +66,8 @@ class Tab extends React.Component<Props> {
         <Button
           type="secondary"
           flat
+          icon="delete-forever"
           onClick={this.onRemoveClick}>
-          <Icon name="delete-forever" />
           {lang.t('generalRemove')}
         </Button>
       </div>
