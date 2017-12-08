@@ -1,29 +1,100 @@
 @import '../../theme/vars';
 
+@mixin button ($color, $text-color: #fff) {
+  color: $text-color;
+  background-color: $color;
+
+  &:hover {
+    background-color: lighten($color, 12%);
+  }
+
+  &:active {
+    background-color: lighten($color, 24%);
+  }
+}
+
+@mixin button-flat ($color) {
+  color: $color;
+  background-color: transparent;
+
+  &:hover {
+    background-color: rgba($color, .12);
+  }
+
+  &:active {
+    background-color: rgba($color, .4);
+  }
+}
+
 .button {
   height: $input-height;
   line-height: $input-height;
   padding: $input-padding-y $input-padding-x;
   margin: 0 .25rem;
   font-size: .875rem;
+  text-transform: uppercase;
+  font-weight: 500;
   white-space: nowrap;
   text-align: center;
   background: none;
-  background-color: $button-bg;
   border: none;
+  background-color: transparent;
   border-radius: $border-radius;
   transition: background-color 300ms ease-out;
   cursor: pointer;
   user-select: none;
 
+  // regular buttons
+  @include button(#fff,$text-color);
+
+  &--primary {
+    @include button($color-primary);
+  }
+
+  &--secondary {
+    @include button($color-secondary);
+  }
+
+
+  // flat buttons
+  &--flat {
+    @include button-flat($text-color);
+
+  }
+  &--flat#{&}--primary {
+    @include button-flat($color-primary);
+  }
+
+  &--flat#{&}--secondary {
+    @include button-flat($color-secondary);
+  }
+
+  // raised
+  &--raised {
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    transition: background-color 280ms ease-out box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: box-shadow;
+
+    &:hover {
+      box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    }
+
+    &:active {
+      box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+    }
+  }
+
   .icon {
+    display: none; // !!!!!!!!!!!!!
     width: $input-height / 2;
     height: $input-height / 2;
     margin-right: .25rem;
+    vertical-align: text-bottom;
   }
 
   &[disabled] {
     opacity: .5;
+    box-shadow: none;
   }
 
   &:first-child {
@@ -38,81 +109,8 @@
     outline: none;
   }
 
-  &:hover {
-    background-color: $button-bg-hover;
-  }
-
-  &:active {
-    background-color: $button-bg-active;
-  }
-
-  &--primary {
-    background: $color-primary;
-    color: $color-primary-text;
-    fill: $color-primary-text;
-
-    &:hover {
-      background: $color-primary-light;
-    }
-
-    &:active {
-      background: $color-primary-dark;
-    }
-  }
-
-  &--secondary {
-    background: $color-secondary;
-    color: $color-secondary-text;
-    fill: $color-secondary-text;
-
-    &:hover {
-      background: $color-secondary-light;
-    }
-
-    &:active {
-      background: $color-secondary-dark;
-    }
-  }
-
-  &--outline {
-    transition: border 300ms ease-out, color 300ms ease-out;
-  }
-
-  &--outline#{&}--secondary {
-    background: none;
-    border: solid 1px transparent;
-    color: $color-secondary;
-    fill: $color-secondary;
-
-    &:hover {
-      color: $color-secondary-light;
-      fill: $color-secondary-light;
-      border-color: $color-secondary-light;
-    }
-
-    &:active {
-      color: $color-secondary-dark;
-      fill: $color-secondary-dark;
-      border-color: $color-secondary-dark;
-    }
-  }
-
-  &--outline#{&}--primary {
-    background: none;
-    border: solid 1px transparent;
-    color: $color-primary;
-    fill: $color-primary;
-
-    &:hover {
-      color: $color-primary-light;
-      fill: $color-primary-light;
-      border-color: $color-primary-light;
-    }
-
-    &:active {
-      color: $color-primary-dark;
-      fill: $color-primary-dark;
-      border-color: $color-primary-dark;
-    }
+  &--compact {
+    padding-left: $input-padding-x / 2;
+    padding-right: $input-padding-x / 2;
   }
 }

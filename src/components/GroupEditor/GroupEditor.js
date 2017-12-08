@@ -69,6 +69,8 @@ class GroupEditor extends React.Component<Props, State> {
           autoFocus />
         <Button
           type="primary"
+          flat
+          compact
           disabled={this.state.name === ''}
           onClick={this.onSaveClick}>
           <Icon name="checkmark" />
@@ -76,14 +78,16 @@ class GroupEditor extends React.Component<Props, State> {
         </Button>
         <Button
           type="secondary"
-          outline
+          flat
+          compact
           onClick={this.onCancelClick}>
           <Icon name="close" />
           {lang.t('generalCancel')}
         </Button>
         {this.props.showDelete && <Button
           type="secondary"
-          outline
+          flat
+          compact
           onClick={this.onDeleteClick}>
           <Icon name="delete-forever" />
           {lang.t('generalDelete')}

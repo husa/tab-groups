@@ -66,7 +66,7 @@ class Tab extends React.Component<Props> {
       <div className="tab__actions">
         <Button
           type="secondary"
-          outline
+          flat
           onClick={this.onRemoveClick}>
           <Icon name="delete-forever" />
           {lang.t('generalRemove')}

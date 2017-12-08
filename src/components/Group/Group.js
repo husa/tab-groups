@@ -139,14 +139,14 @@ class Group extends React.Component<Props, State> {
           })}>
             <Button
               type="primary"
-              outline
+              flat
               disabled={!this.props.group.tabs.length}
               onClick={this.onOpenClick}>
               {lang.t('groupOpen')}
             </Button>
             <Button
               type="primary"
-              outline
+              flat
               disabled={!this.props.group.tabs.length}
               onClick={this.onOpenInNewWindowClick}>
               {lang.t('groupOpenInNewWindow')}
