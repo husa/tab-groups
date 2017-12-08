@@ -77,16 +77,7 @@
       .icon {
         width: 1rem;
         height: 1rem;
-        margin: 0 5px;
         fill: $text-color-muted;
-      }
-
-      &:hover {
-        cursor: pointer;
-
-        .icon {
-          fill: $color-primary;
-        }
       }
     }
   }

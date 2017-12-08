@@ -115,6 +115,18 @@ class Group extends React.Component<Props, State> {
     );
   }
 
+  getEditButton () {
+    return (
+      <Button
+        compact
+        flat
+        className="group__name__edit"
+        onClick={this.onEditClick}>
+        <Icon name="pencil" />
+      </Button>
+    );
+  }
+
   render () {
     const {group} = this.props;
     return (
@@ -130,9 +142,7 @@ class Group extends React.Component<Props, State> {
               {group.name}
             </div>
             {this.getBadge()}
-            <div className="group__name__edit" onClick={this.onEditClick}>
-              <Icon name="pencil" />
-            </div>
+            {this.getEditButton()}
           </div>
           <div className={classNames('group__actions', {
             'group__actions--disabled': group.tabs.length === 0
