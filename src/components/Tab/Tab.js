@@ -6,9 +6,9 @@ import * as React from 'react';
 import autobind from 'autobindr';
 
 import lang from '../../services/lang';
+import tabsService from '../../services/tabs';
 import Button from '../Button/Button';
 import Checkbox from '../Checkbox/Checkbox';
-
 import type {Tab as TabT} from '../../types';
 
 
@@ -37,6 +37,10 @@ class Tab extends React.Component<Props> {
     this.props.onRemove(this.props.tab);
   }
 
+  onOpenClick () {
+    tabsService.open([this.props.tab]);
+  }
+
   getCheckbox () {
     if (!this.props.showCheckbox) return null;
     return (
@@ -63,6 +67,12 @@ class Tab extends React.Component<Props> {
     if (!this.props.showActions) return null;
     return (
       <div className="tab__actions">
+        <Button
+          type="primary"
+          flat
+          onClick={this.onOpenClick}>
+          {lang.t('groupOpen')}
+        </Button>
         <Button
           type="secondary"
           flat
