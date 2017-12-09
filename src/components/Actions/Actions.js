@@ -110,6 +110,7 @@ class Actions extends React.Component<Props, State> {
           onSelect={this.onAddTabGroupSelect} />
         <Button
           type="primary"
+          flat
           disabled={this.state.addTabGroup === null}
           icon="checkmark"
           onClick={this.onAddTabSaveClick}>
