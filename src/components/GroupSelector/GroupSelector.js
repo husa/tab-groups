@@ -12,6 +12,7 @@ import type {Group} from '../../types';
 
 type Props = {
   groups: Array<Group>,
+  defaultSelected?: ?Group,
   onSelect: (group: Group) => void
 };
 type State = {
@@ -20,13 +21,12 @@ type State = {
 };
 
 class GroupSelector extends React.Component<Props, State> {
-  state = {
-    selected: null,
-    open: false
-  }
-
-  constructor () {
+  constructor (props: Props) {
     super();
+    this.state = {
+      selected: props.defaultSelected || null,
+      open: false
+    };
     autobind(this);
   }
 

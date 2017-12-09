@@ -107,6 +107,7 @@ class Actions extends React.Component<Props, State> {
       <div className="actions__add-tab">
         <GroupSelector
           groups={this.props.groups}
+          defaultSelected={this.state.addTabGroup}
           onSelect={this.onAddTabGroupSelect} />
         <Button
           type="primary"
