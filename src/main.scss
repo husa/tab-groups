@@ -16,10 +16,14 @@ html {
 }
 
 body {
-  background: #fff;
+  background: $body-bg;
   font-size: $body-font-size;
   font-family: $body-font-family;
   min-width: 200px;
   color: $text-color;
   fill: $text-color;
+
+  &.platform-win {
+    background: $body-bg-win;
+  }
 }

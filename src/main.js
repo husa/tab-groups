@@ -8,6 +8,7 @@ import {Provider} from 'react-redux';
 
 import createStore from './store';
 import groupsService from './services/groups';
+import platformService from './services/platform';
 import user from './services/user';
 import App from './layout/App/App';
 
@@ -16,7 +17,12 @@ const start = performance.now();
 
 Promise.all([
   groupsService.getAll(),
-  user.ensureId()
+  user.ensureId(),
+  platformService.getOS().then(os => {
+    if (document.body) {
+      document.body.classList.add(`platform-${os}`);
+    }
+  })
   // load saved data
 ]).then(([groups, userId]) => {
   const initialState = {
