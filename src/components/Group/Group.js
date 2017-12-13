@@ -11,6 +11,7 @@ import tabsService from '../../services/tabs';
 import Tabs from '../Tabs/Tabs';
 import Button from '../Button/Button';
 import Icon from '../Icon/Icon';
+import Confirm from '../Confirm/Confirm';
 import type {Group as GroupT, Tab} from '../../types';
 
 

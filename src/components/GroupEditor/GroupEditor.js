@@ -8,6 +8,7 @@ import autobind from 'autobindr';
 import lang from '../../services/lang';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
+import Confirm from '../Confirm/Confirm';
 
 
 type Props = {
@@ -19,7 +20,8 @@ type Props = {
 };
 
 type State = {
-  name: string
+  name: string,
+  showDeleteConfirmation: boolean
 };
 
 class GroupEditor extends React.Component<Props, State> {
@@ -31,7 +33,8 @@ class GroupEditor extends React.Component<Props, State> {
   constructor (props: Props) {
     super(props);
     this.state = {
-      name: props.name || ''
+      name: props.name || '',
+      showDeleteConfirmation: false
     };
     autobind(this);
   }
@@ -53,7 +56,16 @@ class GroupEditor extends React.Component<Props, State> {
   }
 
   onDeleteClick () {
+    this.setState({showDeleteConfirmation: true});
+  }
+
+  onDeleteConfirm () {
+    this.setState({showDeleteConfirmation: false});
     if (typeof this.props.onDelete === 'function') this.props.onDelete();
+  }
+
+  onDeleteCancel () {
+    this.setState({showDeleteConfirmation: false});
   }
 
   render () {
@@ -91,6 +103,16 @@ class GroupEditor extends React.Component<Props, State> {
           onClick={this.onDeleteClick}>
           {lang.t('generalDelete')}
         </Button>}
+        {this.state.showDeleteConfirmation && (
+          <Confirm
+            okTitle="Delete"
+            cancelTitle="Cancel"
+            title="Delete group?"
+            onOk={this.onDeleteConfirm}
+            onCancel={this.onDeleteCancel}>
+            This will permanently delete {this.state.name} group and all its tabs
+          </Confirm>
+        )}
       </div>
     );
   }
