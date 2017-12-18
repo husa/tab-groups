@@ -6,6 +6,7 @@ import * as React from 'react';
 import autobind from 'autobindr';
 
 import lang from '../../services/lang';
+import analytics from '../../services/analytics';
 import Button from '../Button/Button';
 import GroupCreate from '../GroupCreate/GroupCreate';
 import GroupSelector from '../GroupSelector/GroupSelector';
@@ -58,6 +59,7 @@ class Actions extends React.Component<Props, State> {
     if (!addTabGroup) return;
     tabs.getCurrent().then(tab => {
       this.props.addTabToGroup(addTabGroup.id, tab);
+      analytics.tabAdded();
     });
     this.setState({showAddTabForm: false, addTabGroup: null});
   }
@@ -77,6 +79,7 @@ class Actions extends React.Component<Props, State> {
 
   onNewGroupSave (group: UnknownGroup) {
     this.props.createNewGroup(group);
+    analytics.groupCreated();
     this.setState({
       newGroupName: '',
       showNewGroupForm: false

@@ -7,6 +7,7 @@ import autobind from 'autobindr';
 
 import lang from '../../services/lang';
 import tabsService from '../../services/tabs';
+import analytics from '../../services/analytics';
 import Button from '../Button/Button';
 import Checkbox from '../Checkbox/Checkbox';
 import type {Tab as TabT} from '../../types';
@@ -39,6 +40,7 @@ class Tab extends React.Component<Props> {
 
   onOpenClick () {
     tabsService.open([this.props.tab]);
+    analytics.tabOpened();
   }
 
   getCheckbox () {

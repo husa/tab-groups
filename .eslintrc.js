@@ -12,7 +12,8 @@ module.exports = {
   },
   "globals": {
     "chrome": false,
-    "ENV": false
+    "ENV": false,
+    "ga": false
   },
   "plugins": [
     "react",

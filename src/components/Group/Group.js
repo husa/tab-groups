@@ -8,6 +8,7 @@ import autobind from 'autobindr';
 
 import lang from '../../services/lang';
 import tabsService from '../../services/tabs';
+import analytics from '../../services/analytics';
 import Tabs from '../Tabs/Tabs';
 import Button from '../Button/Button';
 import Icon from '../Icon/Icon';
@@ -28,8 +29,8 @@ type State = {
 class Group extends React.Component<Props, State> {
   state = {
     showTabs: false
-  }
-  tabsContent: ?HTMLElement = null
+  };
+  tabsContent: ?HTMLElement = null;
 
   constructor () {
     super();
@@ -45,6 +46,7 @@ class Group extends React.Component<Props, State> {
     e.stopPropagation();
     const {tabs} = this.props.group;
     tabsService.open(tabs);
+    analytics.groupOpened();
   }
 
   onOpenInNewWindowClick (e: SyntheticMouseEvent<>) {
@@ -54,11 +56,13 @@ class Group extends React.Component<Props, State> {
     tabsService.open(tabs, {
       newWindow: true
     });
+    analytics.groupOpened(true);
   }
 
   onTabRemove (tab: Tab) {
     const {group} = this.props;
     this.props.onTabRemove(group.id, tab.id);
+    analytics.tabDeleted();
   }
 
   onEditClick (e: SyntheticMouseEvent<>) {
@@ -76,14 +80,15 @@ class Group extends React.Component<Props, State> {
     });
 
     const tabsStyle = {
-      maxHeight: this.state.showTabs && this.tabsContent ? this.tabsContent.scrollHeight : 0
+      maxHeight:
+        this.state.showTabs && this.tabsContent
+          ? this.tabsContent.scrollHeight
+          : 0
     };
     let content;
     if (!tabs.length) {
       content = (
-        <div className="group__tabs__empty-label">
-          {lang.t('groupNoTabs')}
-        </div>
+        <div className="group__tabs__empty-label">{lang.t('groupNoTabs')}</div>
       );
     } else {
       content = (
@@ -108,11 +113,7 @@ class Group extends React.Component<Props, State> {
   getBadge () {
     if (!this.props.showTabCountBadge) return null;
     const {group} = this.props;
-    return (
-      <div className="group__name__tab-count">
-        {group.tabs.length}
-      </div>
-    );
+    return <div className="group__name__tab-count">{group.tabs.length}</div>;
   }
 
   getEditButton () {
@@ -130,23 +131,23 @@ class Group extends React.Component<Props, State> {
   render () {
     const {group} = this.props;
     return (
-      <div className={classNames('group', {
-        'group--open': this.state.showTabs
-      })}>
+      <div
+        className={classNames('group', {
+          'group--open': this.state.showTabs
+        })}>
         <div className="group__header" onClick={this.onHeaderClick}>
           <div className="group__expand-icon">
             <Icon name="chevron-down" />
           </div>
           <div className="group__name">
-            <div className="group__name__label">
-              {group.name}
-            </div>
+            <div className="group__name__label">{group.name}</div>
             {this.getBadge()}
             {this.getEditButton()}
           </div>
-          <div className={classNames('group__actions', {
-            'group__actions--disabled': group.tabs.length === 0
-          })}>
+          <div
+            className={classNames('group__actions', {
+              'group__actions--disabled': group.tabs.length === 0
+            })}>
             <Button
               type="primary"
               flat

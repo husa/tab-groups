@@ -6,6 +6,7 @@ import * as React from 'react';
 import autobind from 'autobindr';
 
 import lang from '../../services/lang';
+import analytics from '../../services/analytics';
 import Group from '../Group/Group';
 import GroupEdit from '../GroupEdit/GroupEdit';
 import type {Group as GroupT} from '../../types';
@@ -47,11 +48,13 @@ class Groups extends React.Component<Props, State> {
   onGroupUpdate (group: GroupT, name: string) {
     this.onGroupEditCancel(group);
     this.props.renameGroup(group.id, name);
+    analytics.groupRenamed();
   }
 
   onGroupDelete (group: GroupT) {
     this.onGroupEditCancel(group);
     this.props.deleteGroup(group.id);
+    analytics.groupDeleted();
   }
 
   render () {
