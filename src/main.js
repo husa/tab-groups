@@ -8,6 +8,7 @@ import {Provider} from 'react-redux';
 
 import createStore from './store';
 import groupsService from './services/groups';
+import platform from './services/platform';
 import user from './services/user';
 import App from './layout/App/App';
 
@@ -26,9 +27,12 @@ Promise.all([
   return createStore(initialState);
 }).then(store => Promise.all([
   store,
-  // possible fix for chrome
+  // possible fix for chrome on macOS
   // https://bugs.chromium.org/p/chromium/issues/detail?id=428044
-  new Promise(res => setTimeout(res, 150))
+  platform.getOS().then(os => {
+    if (os !== 'mac') return null;
+    return new Promise(res => setTimeout(res, 150));
+  })
   // dispatch initial actions
 ])).then(([store]) => {
   const rootEl = document.querySelector('#root');
