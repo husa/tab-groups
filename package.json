@@ -14,8 +14,8 @@
     "build:assets": "cp -r ./src/analytics.js ./src/assets ./src/_locales ./src/manifest.json ./build",
     "build:code": "cross-env NODE_ENV=production webpack",
     "zip": "bestzip build.zip ./build",
-    "release": "node bin/release.js",
-    "deploy": "node bin/deploy.js"
+    "release": "node ./scripts/release.js",
+    "deploy": "node ./scripts/deploy.js"
   },
   "repository": {
     "type": "git",
