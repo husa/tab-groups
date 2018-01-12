@@ -3,6 +3,7 @@
 .group-selector {
   position: relative;
   min-width: 240px;
+  user-select: none;
 
   $group-selector-height: 36px;
 
@@ -41,48 +42,30 @@
   &__options {
     display: none;
     position: absolute;
-    top: $group-selector-height - 1px;
+    top: 0;
     left: 0;
     right: 0;
     width: 100%;
     background: #fff;
     border-radius: $border-radius;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border: solid 1px $grey-light;
-    border-top: none;
     padding: .5rem 0;
     z-index: $zindex-dropdown;
-    transition: border-color 100ms ease-out;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   }
 
   &__option {
-    padding: .5rem;
-    margin: 0 .5rem;
-    border-bottom: solid 1px $grey-light;
+    font-size: 1rem;
+    line-height: 3rem;
+    padding: 0 1rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     cursor: pointer;
-    transition: color 100ms ease-out;
+    background-color: transparent;
 
     &:hover {
-      color: $color-primary;
+      background-color: rgba(0, 0, 0, 0.04);
     }
-
-    &:last-child {
-      border-bottom: none;
-    }
-  }
-
-  &--open &__options {
-    border-color: $color-primary;
-  }
-
-  &--open &__content {
-    border-color: $color-primary;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
   }
 
   &--open &__icon {

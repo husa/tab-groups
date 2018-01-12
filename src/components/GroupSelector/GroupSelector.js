@@ -30,6 +30,22 @@ class GroupSelector extends React.Component<Props, State> {
     autobind(this);
   }
 
+  componentWillUpdate (nextProps: Props, nextState: State) {
+    if (nextState.open && !this.state.open) {
+      document.addEventListener('click', this.onDocumentClick);
+    } else if (!nextState.open && this.state.open) {
+      document.removeEventListener('click', this.onDocumentClick);
+    }
+  }
+
+  componentWillUnmount () {
+    document.removeEventListener('click', this.onDocumentClick);
+  }
+
+  onDocumentClick () {
+    this.setState({open: false});
+  }
+
   onSelect (group: Group) {
     this.setState({selected: group, open: false});
     this.props.onSelect(group);
