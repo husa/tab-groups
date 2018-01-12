@@ -6,5 +6,12 @@
 
   &__title {
     height: 28px;
+    vertical-align: top;
+  }
+
+  &__dev {
+    color: $text-color-muted;
+    font-family: monospace;
+    margin: .5rem;
   }
 }

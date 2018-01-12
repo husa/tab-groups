@@ -1,10 +1,10 @@
 // @flow
 
 import './Header.scss';
+import React from 'react';
 
 import lang from '../../services/lang';
 
-import React from 'react';
 
 const Header = () => (
   <div className="header">
@@ -12,6 +12,7 @@ const Header = () => (
       className="header__title"
       src="/assets/title.svg "
       alt={lang.t('headerTitle')} />
+    {ENV === 'development' ? <span className="header__dev">dev</span> : null}
   </div>
 );
 
