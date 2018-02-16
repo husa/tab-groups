@@ -10,7 +10,7 @@
   }
 
   &:active {
-    background-color: lighten($color, 24%);
+    background-color: darken($color, 12%);
   }
 }
 
@@ -30,6 +30,7 @@
 
 .button {
   height: $input-height;
+  min-width: $input-height;
   line-height: $input-height;
   padding: $input-padding-y $input-padding-x;
   margin: 0 .25rem;
@@ -42,7 +43,7 @@
   border: none;
   background-color: transparent;
   border-radius: $border-radius;
-  transition: background-color 300ms ease-out;
+  transition: background-color 280ms ease-out;
   cursor: pointer;
   user-select: none;
 
@@ -114,5 +115,9 @@
   &--compact {
     padding-left: $input-padding-x / 2;
     padding-right: $input-padding-x / 2;
+  }
+
+  &--rounded {
+    border-radius: $input-height;
   }
 }

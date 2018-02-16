@@ -121,6 +121,7 @@ class Group extends React.Component<Props, State> {
       <Button
         compact
         flat
+        rounded
         className="group__name__edit"
         onClick={this.onEditClick}>
         <Icon name="pencil" />

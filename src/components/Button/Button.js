@@ -13,6 +13,7 @@ type Props = {
   flat?: boolean,
   raised?: boolean,
   compact?: boolean,
+  rounded?: boolean,
   icon?: string,
   children?: React.Node
 };
@@ -23,6 +24,7 @@ const Button = ({
   flat = false,
   raised = false,
   compact = false,
+  rounded = false,
   icon,
   children,
   ...rest
@@ -32,6 +34,7 @@ const Button = ({
       'button--flat': flat,
       'button--raised': raised,
       'button--compact': compact,
+      'button--rounded': rounded,
       'button--icon': icon
     })}
     {...rest}>
