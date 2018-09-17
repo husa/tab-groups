@@ -1,7 +1,7 @@
 // @flow
 
 class Storage {
-  set (key: string, val: any): Promise<void> {
+  set(key: string, val: any): Promise<void> {
     return new Promise(res => {
       chrome.storage.sync.set(
         {
@@ -12,13 +12,13 @@ class Storage {
     });
   }
 
-  get<T> (key: string): Promise<T> {
+  get<T>(key: string): Promise<T> {
     return new Promise(res => {
       chrome.storage.sync.get(key, res);
     });
   }
 
-  remove (key: string): Promise<void> {
+  remove(key: string): Promise<void> {
     return new Promise(res => {
       chrome.storage.sync.remove(key, res);
     });

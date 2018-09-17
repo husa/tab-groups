@@ -11,7 +11,7 @@ const toPureTab = (tab: chrome$Tab): Tab => {
 };
 
 class Tabs {
-  getAll (): Promise<Array<Tab>> {
+  getAll(): Promise<Array<Tab>> {
     return new Promise(res => {
       chrome.tabs.query(
         {
@@ -22,7 +22,7 @@ class Tabs {
     });
   }
 
-  getCurrent (): Promise<Tab> {
+  getCurrent(): Promise<Tab> {
     return new Promise(res => {
       chrome.tabs.query(
         {
@@ -34,7 +34,7 @@ class Tabs {
     });
   }
 
-  open (tabs: Array<Tab>, {newWindow = false}: {newWindow: boolean} = {}): Promise<void> {
+  open(tabs: Array<Tab>, {newWindow = false}: {newWindow: boolean} = {}): Promise<void> {
     return new Promise(resolve => {
       if (newWindow) {
         chrome.windows.create({}, (chromeWindow: ?chrome$Window) => {

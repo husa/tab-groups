@@ -31,16 +31,16 @@ class Group extends React.Component<Props, State> {
   };
   tabsContent: ?HTMLElement = null;
 
-  constructor () {
+  constructor() {
     super();
     autobind(this);
   }
 
-  onHeaderClick () {
+  onHeaderClick() {
     this.setState(state => ({showTabs: !state.showTabs}));
   }
 
-  onOpenClick (e: SyntheticMouseEvent<>) {
+  onOpenClick(e: SyntheticMouseEvent<>) {
     e.preventDefault();
     e.stopPropagation();
     const {tabs} = this.props.group;
@@ -48,7 +48,7 @@ class Group extends React.Component<Props, State> {
     analytics.groupOpened();
   }
 
-  onOpenInNewWindowClick (e: SyntheticMouseEvent<>) {
+  onOpenInNewWindowClick(e: SyntheticMouseEvent<>) {
     e.preventDefault();
     e.stopPropagation();
     const {tabs} = this.props.group;
@@ -58,19 +58,19 @@ class Group extends React.Component<Props, State> {
     analytics.groupOpened(true);
   }
 
-  onTabRemove (tab: Tab) {
+  onTabRemove(tab: Tab) {
     const {group} = this.props;
     this.props.onTabRemove(group.id, tab.id);
     analytics.tabDeleted();
   }
 
-  onEditClick (e: SyntheticMouseEvent<>) {
+  onEditClick(e: SyntheticMouseEvent<>) {
     e.preventDefault();
     e.stopPropagation();
     this.props.onGroupEdit(this.props.group);
   }
 
-  getTabs () {
+  getTabs() {
     const {tabs} = this.props.group;
 
     const tabsClassName = classNames('group__tabs', {
@@ -102,13 +102,13 @@ class Group extends React.Component<Props, State> {
     );
   }
 
-  getBadge () {
+  getBadge() {
     if (!this.props.showTabCountBadge) return null;
     const {group} = this.props;
     return <div className="group__name__tab-count">{group.tabs.length}</div>;
   }
 
-  getEditButton () {
+  getEditButton() {
     return (
       <Button compact flat rounded className="group__name__edit" onClick={this.onEditClick}>
         <Icon name="pencil" />
@@ -116,7 +116,7 @@ class Group extends React.Component<Props, State> {
     );
   }
 
-  render () {
+  render() {
     const {group} = this.props;
     return (
       <div

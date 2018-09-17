@@ -27,7 +27,7 @@ class GroupEditor extends React.Component<Props, State> {
     showDelete: false
   };
 
-  constructor (props: Props) {
+  constructor(props: Props) {
     super(props);
     this.state = {
       name: props.name || ''
@@ -35,27 +35,27 @@ class GroupEditor extends React.Component<Props, State> {
     autobind(this);
   }
 
-  onChange (e: SyntheticInputEvent<>) {
+  onChange(e: SyntheticInputEvent<>) {
     this.setState({name: e.target.value});
   }
 
-  onKeyPress (e: SyntheticInputEvent<>) {
+  onKeyPress(e: SyntheticInputEvent<>) {
     if (e.key === 'Enter') this.props.onSave(this.state.name);
   }
 
-  onSaveClick () {
+  onSaveClick() {
     this.props.onSave(this.state.name);
   }
 
-  onCancelClick () {
+  onCancelClick() {
     this.props.onCancel();
   }
 
-  onDeleteClick () {
+  onDeleteClick() {
     if (typeof this.props.onDelete === 'function') this.props.onDelete();
   }
 
-  render () {
+  render() {
     return (
       <div className="group-editor">
         <Input

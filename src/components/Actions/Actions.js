@@ -40,20 +40,20 @@ class Actions extends React.Component<Props, State> {
     addTabGroup: null
   };
 
-  constructor () {
+  constructor() {
     super();
     autobind(this);
   }
 
-  onCreateNewGroupClick () {
+  onCreateNewGroupClick() {
     this.setState({showNewGroupForm: true, showAddTabForm: false});
   }
 
-  onAddTabClick () {
+  onAddTabClick() {
     this.setState({showAddTabForm: true, showNewGroupForm: false});
   }
 
-  onAddTabSaveClick () {
+  onAddTabSaveClick() {
     const {addTabGroup} = this.state;
     if (!addTabGroup) return;
     tabs.getCurrent().then(tab => {
@@ -63,20 +63,20 @@ class Actions extends React.Component<Props, State> {
     this.setState({showAddTabForm: false, addTabGroup: null});
   }
 
-  onAddTabCancelClick () {
+  onAddTabCancelClick() {
     this.setState({showAddTabForm: false});
   }
 
-  onAddTabGroupSelect (group: Group) {
+  onAddTabGroupSelect(group: Group) {
     this.setState({addTabGroup: group});
   }
 
-  onNewGroupChange (e: SyntheticInputEvent<HTMLInputElement>) {
+  onNewGroupChange(e: SyntheticInputEvent<HTMLInputElement>) {
     const {value} = e.target;
     this.setState({newGroupName: value});
   }
 
-  onNewGroupSave (group: UnknownGroup) {
+  onNewGroupSave(group: UnknownGroup) {
     this.props.createNewGroup(group);
     analytics.groupCreated();
     this.setState({
@@ -85,14 +85,14 @@ class Actions extends React.Component<Props, State> {
     });
   }
 
-  onNewGroupCancel () {
+  onNewGroupCancel() {
     this.setState({
       newGroupName: '',
       showNewGroupForm: false
     });
   }
 
-  getNewGroupForm () {
+  getNewGroupForm() {
     if (!this.state.showNewGroupForm) return null;
     return (
       <GroupCreate
@@ -103,7 +103,7 @@ class Actions extends React.Component<Props, State> {
     );
   }
 
-  getAddTabForm () {
+  getAddTabForm() {
     if (!this.state.showAddTabForm) return null;
     return (
       <div className="actions__add-tab">
@@ -126,7 +126,7 @@ class Actions extends React.Component<Props, State> {
     );
   }
 
-  render () {
+  render() {
     return (
       <div className="actions">
         <div className="actions__bar">

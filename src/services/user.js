@@ -14,7 +14,7 @@ type UserInfo = {
 };
 
 class User {
-  ensureId (): Promise<string> {
+  ensureId(): Promise<string> {
     return storage.get(USER_ID_KEY).then((user: UserInfo) => {
       if (!isEmpty(user)) return user.id;
       const id: ID = this.generateId();
@@ -22,7 +22,7 @@ class User {
     });
   }
 
-  generateId (): ID {
+  generateId(): ID {
     return uuid();
   }
 }

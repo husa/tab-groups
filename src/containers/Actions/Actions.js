@@ -14,11 +14,11 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  createNewGroup (group: UnknownGroup): Promise<Group> {
+  createNewGroup(group: UnknownGroup): Promise<Group> {
     return dispatch(createNewGroup(group));
   },
 
-  addTabToGroup (groupId: string, tab: Tab): Promise<Group> {
+  addTabToGroup(groupId: string, tab: Tab): Promise<Group> {
     return dispatch(addTabToGroup(groupId, tab));
   }
 });

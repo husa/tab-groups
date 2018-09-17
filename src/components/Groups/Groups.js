@@ -27,36 +27,36 @@ class Groups extends React.Component<Props, State> {
     editGroups: []
   };
 
-  constructor () {
+  constructor() {
     super();
     autobind(this);
   }
 
-  onGroupEditClick (group: GroupT) {
+  onGroupEditClick(group: GroupT) {
     this.setState(state => ({
       editGroups: state.editGroups.concat([group])
     }));
   }
 
-  onGroupEditCancel (group: GroupT) {
+  onGroupEditCancel(group: GroupT) {
     this.setState(state => ({
       editGroups: state.editGroups.filter(({id}) => id !== group.id)
     }));
   }
 
-  onGroupUpdate (group: GroupT, name: string) {
+  onGroupUpdate(group: GroupT, name: string) {
     this.onGroupEditCancel(group);
     this.props.renameGroup(group.id, name);
     analytics.groupRenamed();
   }
 
-  onGroupDelete (group: GroupT) {
+  onGroupDelete(group: GroupT) {
     this.onGroupEditCancel(group);
     this.props.deleteGroup(group.id);
     analytics.groupDeleted();
   }
 
-  render () {
+  render() {
     const {groups, ...rest} = this.props;
 
     const list = groups.map(group => {

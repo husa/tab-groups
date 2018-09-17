@@ -35,6 +35,7 @@ module.exports = {
     'no-extra-parens': 0,
     'guard-for-in': 0,
     'operator-linebreak': 0,
+    'space-before-function-paren': 0,
 
     // react specific
     'react/prop-types': 0,

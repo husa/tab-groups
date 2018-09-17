@@ -12,15 +12,15 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  renameGroup (...args) {
+  renameGroup(...args) {
     return dispatch(renameGroup(...args));
   },
 
-  deleteGroup (...args) {
+  deleteGroup(...args) {
     return dispatch(deleteGroup(...args));
   },
 
-  deleteTab (...args) {
+  deleteTab(...args) {
     return dispatch(deleteTab(...args));
   }
 });

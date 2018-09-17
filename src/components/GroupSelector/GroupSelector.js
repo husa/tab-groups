@@ -21,7 +21,7 @@ type State = {
 };
 
 class GroupSelector extends React.Component<Props, State> {
-  constructor (props: Props) {
+  constructor(props: Props) {
     super();
     this.state = {
       selected: props.defaultSelected || null,
@@ -30,7 +30,7 @@ class GroupSelector extends React.Component<Props, State> {
     autobind(this);
   }
 
-  componentWillUpdate (nextProps: Props, nextState: State) {
+  componentWillUpdate(nextProps: Props, nextState: State) {
     if (nextState.open && !this.state.open) {
       document.addEventListener('click', this.onDocumentClick);
     } else if (!nextState.open && this.state.open) {
@@ -38,29 +38,29 @@ class GroupSelector extends React.Component<Props, State> {
     }
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     document.removeEventListener('click', this.onDocumentClick);
   }
 
-  onDocumentClick () {
+  onDocumentClick() {
     this.setState({open: false});
   }
 
-  onSelect (group: Group) {
+  onSelect(group: Group) {
     this.setState({selected: group, open: false});
     this.props.onSelect(group);
   }
 
-  onLabelClick () {
+  onLabelClick() {
     this.setState(state => ({open: !state.open}));
   }
 
-  getLabel () {
+  getLabel() {
     const {selected} = this.state;
     return selected ? selected.name : lang.t('groupsSelectGroup');
   }
 
-  getGroupOptions () {
+  getGroupOptions() {
     const {selected} = this.state;
     return this.props.groups.map(group => (
       <div
@@ -74,7 +74,7 @@ class GroupSelector extends React.Component<Props, State> {
     ));
   }
 
-  render () {
+  render() {
     return (
       <div
         className={classNames('group-selector', {

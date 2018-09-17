@@ -26,7 +26,7 @@ type State = {
 };
 
 class GroupCreate extends React.Component<Props, State> {
-  constructor (props: Props) {
+  constructor(props: Props) {
     super(props);
     this.state = {
       includeOpened: true,
@@ -36,18 +36,18 @@ class GroupCreate extends React.Component<Props, State> {
     autobind(this);
   }
 
-  componentWillMount () {
+  componentWillMount() {
     tabsService.getAll().then(tabs => {
       const checkedTabs = tabs.map(tab => tab.id);
       this.setState({tabs, checkedTabs});
     });
   }
 
-  onOpenedTabsChange (e: SyntheticInputEvent<>) {
+  onOpenedTabsChange(e: SyntheticInputEvent<>) {
     this.setState({includeOpened: e.target.checked});
   }
 
-  onSave (name: ?string) {
+  onSave(name: ?string) {
     if (!name) return null;
     let tabs = [];
     if (this.state.includeOpened) {
@@ -56,11 +56,11 @@ class GroupCreate extends React.Component<Props, State> {
     return this.props.onSave({name, tabs});
   }
 
-  onCancel () {
+  onCancel() {
     this.props.onCancel();
   }
 
-  onTabChecked (tab: TabT) {
+  onTabChecked(tab: TabT) {
     const {id} = tab;
     const {checkedTabs} = this.state;
     if (checkedTabs.includes(id)) {
@@ -70,7 +70,7 @@ class GroupCreate extends React.Component<Props, State> {
     }
   }
 
-  getTabs () {
+  getTabs() {
     const {tabs} = this.state;
     if (!tabs.length) return null;
     return tabs.map(tab => (
@@ -83,7 +83,7 @@ class GroupCreate extends React.Component<Props, State> {
     ));
   }
 
-  render () {
+  render() {
     return (
       <div className="group-create">
         <GroupEditor name="" onSave={this.onSave} onCancel={this.onCancel} />

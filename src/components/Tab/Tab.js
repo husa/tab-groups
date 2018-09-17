@@ -27,22 +27,22 @@ class Tab extends React.Component<Props> {
     showCheckbox: false
   };
 
-  constructor () {
+  constructor() {
     super();
     autobind(this);
   }
 
-  onRemoveClick () {
+  onRemoveClick() {
     if (typeof this.props.onRemove !== 'function') return;
     this.props.onRemove(this.props.tab);
   }
 
-  onOpenClick () {
+  onOpenClick() {
     tabsService.open([this.props.tab]);
     analytics.tabOpened();
   }
 
-  getCheckbox () {
+  getCheckbox() {
     if (!this.props.showCheckbox) return null;
     return (
       <Checkbox
@@ -52,7 +52,7 @@ class Tab extends React.Component<Props> {
     );
   }
 
-  getFavIcon () {
+  getFavIcon() {
     const {tab} = this.props;
     if (tab.favIconUrl) {
       return <img src={tab.favIconUrl} alt={tab.title} />;
@@ -60,7 +60,7 @@ class Tab extends React.Component<Props> {
     return <span className="tab__icon__placeholder" />;
   }
 
-  getTabActions () {
+  getTabActions() {
     if (!this.props.showActions) return null;
     return (
       <div className="tab__actions">
@@ -74,7 +74,7 @@ class Tab extends React.Component<Props> {
     );
   }
 
-  render () {
+  render() {
     const {tab} = this.props;
     return (
       <div className="tab">

@@ -3,7 +3,7 @@
 type OS = 'mac' | 'win' | 'android' | 'cros' | 'linux' | 'openbsd';
 
 class Platform {
-  getOS (): Promise<OS> {
+  getOS(): Promise<OS> {
     return new Promise(resolve => {
       chrome.runtime.getPlatformInfo(platformInfo => {
         resolve(platformInfo.os);
