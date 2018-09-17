@@ -13,7 +13,7 @@ const toGroupId = (id: string): string => `group-${id}`;
 const fromGroupID = (str: string): string => str.replace('group-', '');
 
 class Groups {
-  getAll (): Promise<{ids: Array<GroupId>, [id: string]: Group}> {
+  getAll(): Promise<{ids: Array<GroupId>, [id: string]: Group}> {
     return storage.get(GROUPS_KEY).then(res => {
       const groupIds = res[GROUPS_KEY];
       if (!groupIds || isEmpty(groupIds)) return {ids: []};
@@ -31,20 +31,20 @@ class Groups {
         )
         .then(groups => ({
           ...groups,
-          ids: groupIds
+          ids: Object.keys(groups)
         }));
     });
   }
 
-  saveGroup (group: Group): Promise<void> {
+  saveGroup(group: Group): Promise<void> {
     return storage.set(toGroupId(group.id), group);
   }
 
-  saveGroupIds (ids: Array<GroupId>): Promise<void> {
+  saveGroupIds(ids: Array<GroupId>): Promise<void> {
     return storage.set(GROUPS_KEY, ids);
   }
 
-  removeGroup (id: string): Promise<void> {
+  removeGroup(id: string): Promise<void> {
     return storage.remove(toGroupId(id));
   }
 }
