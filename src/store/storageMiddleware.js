@@ -1,5 +1,3 @@
-// @flow
-
 import groupsService from '../services/groups';
 
 import {selectGroupIds, selectGroup} from '../selectors';
