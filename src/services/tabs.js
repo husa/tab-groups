@@ -4,7 +4,6 @@ import uuid from 'uuid/v4';
 
 import type {Tab} from '../types';
 
-
 const toPureTab = (tab: chrome$Tab): Tab => {
   const {title = '', url = '', favIconUrl = '', pinned = false} = tab;
   const id = uuid();
@@ -14,18 +13,24 @@ const toPureTab = (tab: chrome$Tab): Tab => {
 class Tabs {
   getAll (): Promise<Array<Tab>> {
     return new Promise(res => {
-      chrome.tabs.query({
-        currentWindow: true
-      }, (tabs: Array<chrome$Tab>) => res(tabs.map(toPureTab)));
+      chrome.tabs.query(
+        {
+          currentWindow: true
+        },
+        (tabs: Array<chrome$Tab>) => res(tabs.map(toPureTab))
+      );
     });
   }
 
   getCurrent (): Promise<Tab> {
     return new Promise(res => {
-      chrome.tabs.query({
-        active: true,
-        currentWindow: true
-      }, ([tab]) => res(toPureTab(tab)));
+      chrome.tabs.query(
+        {
+          active: true,
+          currentWindow: true
+        },
+        ([tab]) => res(toPureTab(tab))
+      );
     });
   }
 
@@ -54,6 +59,6 @@ class Tabs {
   }
 }
 
-const tabs = new Tabs;
+const tabs = new Tabs();
 
 export default tabs;

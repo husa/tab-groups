@@ -11,7 +11,6 @@ import Group from '../Group/Group';
 import GroupEdit from '../GroupEdit/GroupEdit';
 import type {Group as GroupT} from '../../types';
 
-
 type Props = {|
   groups: Array<GroupT>,
   renameGroup: (id: string, name: string) => void,
@@ -26,7 +25,7 @@ type State = {
 class Groups extends React.Component<Props, State> {
   state = {
     editGroups: []
-  }
+  };
 
   constructor () {
     super();
@@ -85,18 +84,20 @@ class Groups extends React.Component<Props, State> {
     if (!list.length) {
       return (
         <div className="groups groups--empty">
-          {lang.t('groupsNoGroups').split('\n').map((str, i) => (
-            <span key={`${str}-${i}`}>{str}<br /></span>
-          ))}
+          {lang
+            .t('groupsNoGroups')
+            .split('\n')
+            .map((str, i) => (
+              <span key={`${str}-${i}`}>
+                {str}
+                <br />
+              </span>
+            ))}
         </div>
       );
     }
 
-    return (
-      <div className="groups">
-        {list}
-      </div>
-    );
+    return <div className="groups">{list}</div>;
   }
 }
 

@@ -13,11 +13,10 @@ import GroupSelector from '../GroupSelector/GroupSelector';
 import tabs from '../../services/tabs';
 import type {Group, UnknownGroup, Tab} from '../../types';
 
-
 type Props = {
   groups: Array<Group>,
-  createNewGroup (group: UnknownGroup): void,
-  addTabToGroup (groupId: string, tab: Tab): void
+  createNewGroup(group: UnknownGroup): void,
+  addTabToGroup(groupId: string, tab: Tab): void
 };
 
 type State = {
@@ -39,7 +38,7 @@ class Actions extends React.Component<Props, State> {
     newGroupSaveOpenTabs: false,
 
     addTabGroup: null
-  }
+  };
 
   constructor () {
     super();
@@ -120,11 +119,7 @@ class Actions extends React.Component<Props, State> {
           onClick={this.onAddTabSaveClick}>
           {lang.t('generalSave')}
         </Button>
-        <Button
-          type="secondary"
-          flat
-          icon="close"
-          onClick={this.onAddTabCancelClick}>
+        <Button type="secondary" flat icon="close" onClick={this.onAddTabCancelClick}>
           {lang.t('generalCancel')}
         </Button>
       </div>
@@ -142,10 +137,7 @@ class Actions extends React.Component<Props, State> {
             {/* <Icon name="plus-box-multiple-outline" /> */}
             {lang.t('actionsNewGroup')}
           </Button>
-          <Button
-            type="primary"
-            disabled={!this.props.groups.length}
-            onClick={this.onAddTabClick}>
+          <Button type="primary" disabled={!this.props.groups.length} onClick={this.onAddTabClick}>
             {/* <Icon name="plus-box-outline" /> */}
             {lang.t('actionsAddTabToGroup')}
           </Button>

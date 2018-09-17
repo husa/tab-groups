@@ -10,15 +10,9 @@ type Props = {
 };
 
 const Tabs = ({tabs, ...rest}: Props) => {
-  const list = tabs.map((tab, i) => (
-    <Tab key={i} tab={tab} {...rest} />
-  ));
+  const list = tabs.map((tab, i) => <Tab key={i} tab={tab} {...rest} />);
 
-  return (
-    <div className="tabs">
-      {list}
-    </div>
-  );
+  return <div className="tabs">{list}</div>;
 };
 
 export default Tabs;

@@ -27,6 +27,6 @@ class User {
   }
 }
 
-const user: User = new User;
+const user: User = new User();
 
 export default user;

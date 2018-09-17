@@ -3,9 +3,12 @@
 class Storage {
   set (key: string, val: any): Promise<void> {
     return new Promise(res => {
-      chrome.storage.sync.set({
-        [key]: val
-      }, res);
+      chrome.storage.sync.set(
+        {
+          [key]: val
+        },
+        res
+      );
     });
   }
 
@@ -22,6 +25,6 @@ class Storage {
   }
 }
 
-const storage: Storage = new Storage;
+const storage: Storage = new Storage();
 
 export default storage;

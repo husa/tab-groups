@@ -8,7 +8,6 @@ import React from 'react';
 import GroupEditor from '../GroupEditor/GroupEditor';
 import type {Group} from '../../types';
 
-
 type Props = {|
   group: Group,
   onSave: (name: string) => *,

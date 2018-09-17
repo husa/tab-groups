@@ -51,8 +51,7 @@ class GroupCreate extends React.Component<Props, State> {
     if (!name) return null;
     let tabs = [];
     if (this.state.includeOpened) {
-      tabs = this.state.tabs
-        .filter(({id}) => this.state.checkedTabs.includes(id));
+      tabs = this.state.tabs.filter(({id}) => this.state.checkedTabs.includes(id));
     }
     return this.props.onSave({name, tabs});
   }
@@ -87,22 +86,18 @@ class GroupCreate extends React.Component<Props, State> {
   render () {
     return (
       <div className="group-create">
-        <GroupEditor
-          name=""
-          onSave={this.onSave}
-          onCancel={this.onCancel} />
+        <GroupEditor name="" onSave={this.onSave} onCancel={this.onCancel} />
 
         <div className="group-create__tabs-check">
-          <Checkbox
-            checked={this.state.includeOpened}
-            onChange={this.onOpenedTabsChange}>
+          <Checkbox checked={this.state.includeOpened} onChange={this.onOpenedTabsChange}>
             {lang.t('groupsIncludeOpenTabs')}
           </Checkbox>
         </div>
 
-        <div className={classNames('group-create__tabs', {
-          'group-create__tabs--disabled': !this.state.includeOpened
-        })}>
+        <div
+          className={classNames('group-create__tabs', {
+            'group-create__tabs--disabled': !this.state.includeOpened
+          })}>
           {this.getTabs()}
         </div>
       </div>

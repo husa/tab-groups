@@ -1,15 +1,15 @@
 @import '../../theme/vars';
 
 .group-create {
-  padding: .5rem 0 0;
+  padding: 0.5rem 0 0;
 
   &__tabs-check {
-    padding: .5rem 0;
+    padding: 0.5rem 0;
   }
 
   &__tabs {
     &--disabled {
-      opacity: .5;
+      opacity: 0.5;
       pointer-events: none;
     }
   }

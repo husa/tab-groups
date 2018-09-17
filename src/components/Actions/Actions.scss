@@ -1,7 +1,7 @@
 @import '../../theme/vars';
 
 .actions {
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   border-bottom: solid 1px $underline-color;
 
   &__bar {
@@ -10,18 +10,19 @@
     justify-content: flex-start;
   }
 
-  &__content {}
+  &__content {
+  }
 
   &__add-tab {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    padding: .5rem 0 0;
+    padding: 0.5rem 0 0;
 
     .group-selector {
       flex: 0 1 100%;
-      margin-right: .25rem;
+      margin-right: 0.25rem;
     }
 
     .button {

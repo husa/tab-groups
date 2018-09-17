@@ -6,7 +6,6 @@ import {
   DELETE_GROUP,
   ADD_TAB_TO_GROUP,
   DELETE_TAB,
-
   type CreateGroupAction,
   type RenameGroupAction,
   type DeleteGroupAction,
@@ -15,7 +14,6 @@ import {
 } from '../actions/groups';
 
 import type {Group, GroupId} from '../types';
-
 
 type State = {
   +ids: Array<GroupId>,
@@ -28,7 +26,6 @@ type Actions =
   | DeleteGroupAction
   | AddTabToGroupAction
   | DeleteTabAction;
-
 
 const getInitialState = (): State => ({
   ids: []

@@ -21,7 +21,6 @@ export type Group = {
   tabs: Array<Tab>
 };
 
-
 export type Action<TypeLiteral, Payload> = {
   type: TypeLiteral,
   payload: Payload

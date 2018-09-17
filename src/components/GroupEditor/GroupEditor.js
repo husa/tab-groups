@@ -9,7 +9,6 @@ import lang from '../../services/lang';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 
-
 type Props = {
   name?: string,
   showDelete?: boolean,
@@ -26,7 +25,7 @@ class GroupEditor extends React.Component<Props, State> {
   static defaultProps = {
     name: '',
     showDelete: false
-  }
+  };
 
   constructor (props: Props) {
     super(props);
@@ -75,22 +74,14 @@ class GroupEditor extends React.Component<Props, State> {
           onClick={this.onSaveClick}>
           {lang.t('generalSave')}
         </Button>
-        <Button
-          type="secondary"
-          flat
-          compact
-          icon="close"
-          onClick={this.onCancelClick}>
+        <Button type="secondary" flat compact icon="close" onClick={this.onCancelClick}>
           {lang.t('generalCancel')}
         </Button>
-        {this.props.showDelete && <Button
-          type="secondary"
-          flat
-          compact
-          icon="delete-forever"
-          onClick={this.onDeleteClick}>
-          {lang.t('generalDelete')}
-        </Button>}
+        {this.props.showDelete && (
+          <Button type="secondary" flat compact icon="delete-forever" onClick={this.onDeleteClick}>
+            {lang.t('generalDelete')}
+          </Button>
+        )}
       </div>
     );
   }

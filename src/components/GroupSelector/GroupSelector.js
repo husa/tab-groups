@@ -76,18 +76,17 @@ class GroupSelector extends React.Component<Props, State> {
 
   render () {
     return (
-      <div className={classNames('group-selector', {
-        'group-selector--open': this.state.open
-      })}>
+      <div
+        className={classNames('group-selector', {
+          'group-selector--open': this.state.open
+        })}>
         <div className="group-selector__content" onClick={this.onLabelClick}>
           <div className="group-selector__label">{this.getLabel()}</div>
           <div className="group-selector__icon">
             <Icon name="chevron-down" />
           </div>
         </div>
-        <div className="group-selector__options">
-          {this.getGroupOptions()}
-        </div>
+        <div className="group-selector__options">{this.getGroupOptions()}</div>
       </div>
     );
   }

@@ -18,11 +18,17 @@ class Groups {
       const groupIds = res[GROUPS_KEY];
       if (!groupIds || isEmpty(groupIds)) return {ids: []};
 
-      return storage.get(groupIds.map(toGroupId))
-        .then(groups => Object.keys(groups).reduce((acc, id) => ({
-          ...acc,
-          [fromGroupID(id)]: groups[id]
-        }), {}))
+      return storage
+        .get(groupIds.map(toGroupId))
+        .then(groups =>
+          Object.keys(groups).reduce(
+            (acc, id) => ({
+              ...acc,
+              [fromGroupID(id)]: groups[id]
+            }),
+            {}
+          )
+        )
         .then(groups => ({
           ...groups,
           ids: groupIds
@@ -43,6 +49,6 @@ class Groups {
   }
 }
 
-const groups = new Groups;
+const groups = new Groups();
 
 export default groups;

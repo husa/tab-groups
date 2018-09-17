@@ -14,7 +14,6 @@ import Button from '../Button/Button';
 import Icon from '../Icon/Icon';
 import type {Group as GroupT, Tab} from '../../types';
 
-
 type Props = {
   group: GroupT,
   showTabCountBadge: boolean,
@@ -80,20 +79,13 @@ class Group extends React.Component<Props, State> {
     });
 
     const tabsStyle = {
-      maxHeight:
-        this.state.showTabs && this.tabsContent
-          ? this.tabsContent.scrollHeight
-          : 0
+      maxHeight: this.state.showTabs && this.tabsContent ? this.tabsContent.scrollHeight : 0
     };
     let content;
     if (!tabs.length) {
-      content = (
-        <div className="group__tabs__empty-label">{lang.t('groupNoTabs')}</div>
-      );
+      content = <div className="group__tabs__empty-label">{lang.t('groupNoTabs')}</div>;
     } else {
-      content = (
-        <Tabs tabs={tabs} onRemove={this.onTabRemove} showActions={true} />
-      );
+      content = <Tabs tabs={tabs} onRemove={this.onTabRemove} showActions={true} />;
     }
 
     return (
@@ -118,12 +110,7 @@ class Group extends React.Component<Props, State> {
 
   getEditButton () {
     return (
-      <Button
-        compact
-        flat
-        rounded
-        className="group__name__edit"
-        onClick={this.onEditClick}>
+      <Button compact flat rounded className="group__name__edit" onClick={this.onEditClick}>
         <Icon name="pencil" />
       </Button>
     );

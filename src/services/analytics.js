@@ -1,11 +1,7 @@
 // @flow
 
 class Analytics {
-  _sendEvent (
-    eventCategory: string,
-    eventAction: string,
-    eventLabel?: string
-  ): void {
+  _sendEvent (eventCategory: string, eventAction: string, eventLabel?: string): void {
     if (ENV === 'development') return;
     let opts = {eventCategory, eventAction};
     if (eventLabel) opts = {...opts, eventLabel};

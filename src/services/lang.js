@@ -10,6 +10,6 @@ class Lang {
   }
 }
 
-const lang = new Lang;
+const lang = new Lang();
 
 export default lang;

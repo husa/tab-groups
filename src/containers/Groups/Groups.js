@@ -3,14 +3,9 @@
 import {connect} from 'react-redux';
 
 import {selectGroups} from '../../selectors';
-import {
-  renameGroup,
-  deleteGroup,
-  deleteTab
-} from '../../actions/groups';
+import {renameGroup, deleteGroup, deleteTab} from '../../actions/groups';
 
 import Groups from '../../components/Groups/Groups';
-
 
 const mapStateToProps = state => ({
   groups: selectGroups(state)
