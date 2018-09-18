@@ -1,23 +1,21 @@
 {
-  presets: [
-    ['env', {
-      modules: false,
-      targets: {
-        browsers: ['last 5 Chrome versions']
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "modules": false,
+        "targets": {
+          "browsers": ["last 5 Chrome versions"]
+        }
       }
-    }],
-    'react',
-    'flow'
+    ],
+    "@babel/preset-react",
+    "@babel/preset-flow"
   ],
-  plugins: [
-    'transform-object-rest-spread',
-    'babel-plugin-transform-class-properties'
-  ],
-  env: {
-    test: {
-      presets: [
-        'env'
-      ]
+  "plugins": ["@babel/plugin-proposal-class-properties"],
+  "env": {
+    "test": {
+      "presets": ["env"]
     }
   }
 }

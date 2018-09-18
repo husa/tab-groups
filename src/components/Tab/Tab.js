@@ -48,7 +48,8 @@ class Tab extends React.Component<Props> {
       <Checkbox
         className="tab__checkbox"
         checked={this.props.checked}
-        onChange={this.props.onCheck} />
+        onChange={this.props.onCheck}
+      />
     );
   }
 

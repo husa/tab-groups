@@ -10,10 +10,12 @@ export const DELETE_GROUP: 'DELETE_GROUP' = 'DELETE_GROUP';
 export const ADD_TAB_TO_GROUP: 'ADD_TAB_TO_GROUP' = 'ADD_TAB_TO_GROUP';
 export const DELETE_TAB: 'DELETE_TAB' = 'DELETE_TAB';
 
-export type CreateGroupAction = Action<typeof CREATE_NEW_GROUP,
+export type CreateGroupAction = Action<
+  typeof CREATE_NEW_GROUP,
   {
     group: Group
-  }>;
+  }
+>;
 
 export const createNewGroup = (group: UnknownGroup): CreateGroupAction => {
   const id = uuid();
@@ -27,11 +29,13 @@ export const createNewGroup = (group: UnknownGroup): CreateGroupAction => {
   };
 };
 
-export type RenameGroupAction = Action<typeof RENAME_GROUP,
+export type RenameGroupAction = Action<
+  typeof RENAME_GROUP,
   {
     groupId: GroupId,
     name: string
-  }>;
+  }
+>;
 
 export const renameGroup = (groupId: string, name: string): RenameGroupAction => ({
   type: RENAME_GROUP,
@@ -41,10 +45,12 @@ export const renameGroup = (groupId: string, name: string): RenameGroupAction =>
   }
 });
 
-export type DeleteGroupAction = Action<typeof DELETE_GROUP,
+export type DeleteGroupAction = Action<
+  typeof DELETE_GROUP,
   {
     groupId: GroupId
-  }>;
+  }
+>;
 
 export const deleteGroup = (groupId: string): DeleteGroupAction => ({
   type: DELETE_GROUP,
@@ -53,11 +59,13 @@ export const deleteGroup = (groupId: string): DeleteGroupAction => ({
   }
 });
 
-export type AddTabToGroupAction = Action<typeof ADD_TAB_TO_GROUP,
+export type AddTabToGroupAction = Action<
+  typeof ADD_TAB_TO_GROUP,
   {
     groupId: GroupId,
     tab: Tab
-  }>;
+  }
+>;
 
 export const addTabToGroup = (groupId: GroupId, tab: Tab): AddTabToGroupAction => ({
   type: ADD_TAB_TO_GROUP,
@@ -67,11 +75,13 @@ export const addTabToGroup = (groupId: GroupId, tab: Tab): AddTabToGroupAction =
   }
 });
 
-export type DeleteTabAction = Action<typeof DELETE_TAB,
+export type DeleteTabAction = Action<
+  typeof DELETE_TAB,
   {
     groupId: GroupId,
     tabId: string
-  }>;
+  }
+>;
 
 export const deleteTab = (groupId: string, tabId: string): DeleteTabAction => ({
   type: DELETE_TAB,

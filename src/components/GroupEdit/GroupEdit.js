@@ -22,7 +22,8 @@ const GroupEdit = ({group, onSave, onCancel, onDelete}: Props) => (
       showDelete={true}
       onSave={onSave}
       onCancel={onCancel}
-      onDelete={onDelete} />
+      onDelete={onDelete}
+    />
   </div>
 );
 

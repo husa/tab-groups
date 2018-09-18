@@ -99,7 +99,8 @@ class Actions extends React.Component<Props, State> {
         name={this.state.newGroupName}
         onChange={this.onNewGroupChange}
         onSave={this.onNewGroupSave}
-        onCancel={this.onNewGroupCancel} />
+        onCancel={this.onNewGroupCancel}
+      />
     );
   }
 
@@ -110,7 +111,8 @@ class Actions extends React.Component<Props, State> {
         <GroupSelector
           groups={this.props.groups}
           defaultSelected={this.state.addTabGroup}
-          onSelect={this.onAddTabGroupSelect} />
+          onSelect={this.onAddTabGroupSelect}
+        />
         <Button
           type="primary"
           flat

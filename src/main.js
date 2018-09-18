@@ -40,7 +40,7 @@ Promise.all([
   )
   .then(([store]) => {
     const rootEl = document.querySelector('#root');
-    if (!rootEl) throw new Error('Can\'t find #root');
+    if (!rootEl) throw new Error("Can't find #root");
     return render(
       <Provider store={store}>
         <App />

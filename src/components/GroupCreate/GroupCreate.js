@@ -36,7 +36,7 @@ class GroupCreate extends React.Component<Props, State> {
     autobind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     tabsService.getAll().then(tabs => {
       const checkedTabs = tabs.map(tab => tab.id);
       this.setState({tabs, checkedTabs});
@@ -79,7 +79,8 @@ class GroupCreate extends React.Component<Props, State> {
         tab={tab}
         showCheckbox={true}
         checked={this.state.checkedTabs.includes(tab.id)}
-        onCheck={() => this.onTabChecked(tab)} />
+        onCheck={() => this.onTabChecked(tab)}
+      />
     ));
   }
 

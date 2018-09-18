@@ -67,7 +67,8 @@ class Groups extends React.Component<Props, State> {
             group={group}
             onSave={this.onGroupUpdate.bind(this, group)}
             onCancel={this.onGroupEditCancel.bind(this, group)}
-            onDelete={this.onGroupDelete.bind(this, group)} />
+            onDelete={this.onGroupDelete.bind(this, group)}
+          />
         );
       }
       return (
@@ -77,7 +78,8 @@ class Groups extends React.Component<Props, State> {
           showTabCountBadge={false}
           onGroupEdit={this.onGroupEditClick.bind(this, group)}
           onTabRemove={this.props.deleteTab}
-          {...rest} />
+          {...rest}
+        />
       );
     });
 

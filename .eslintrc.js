@@ -36,6 +36,7 @@ module.exports = {
     'guard-for-in': 0,
     'operator-linebreak': 0,
     'space-before-function-paren': 0,
+    quotes: [2, 'single', {avoidEscape: true}],
 
     // react specific
     'react/prop-types': 0,
@@ -43,7 +44,7 @@ module.exports = {
     'react/jsx-closing-bracket-location': [
       1,
       {
-        selfClosing: 'after-props',
+        selfClosing: 'tag-aligned',
         nonEmpty: 'after-props'
       }
     ],
@@ -55,6 +56,8 @@ module.exports = {
     'react/jsx-key': 2,
     'react/jsx-no-duplicate-props': 2,
     'react/jsx-pascal-case': 2,
-    'react/jsx-space-before-closing': [2, 'always']
+    'react/jsx-space-before-closing': [2, 'always'],
+
+    'flowtype/generic-spacing': 0
   }
 };

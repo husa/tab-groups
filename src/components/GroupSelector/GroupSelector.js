@@ -30,7 +30,8 @@ class GroupSelector extends React.Component<Props, State> {
     autobind(this);
   }
 
-  componentWillUpdate(nextProps: Props, nextState: State) {
+  // eslint-disable-next-line
+  UNSAFE__componentWillUpdate(nextProps: Props, nextState: State) {
     if (nextState.open && !this.state.open) {
       document.addEventListener('click', this.onDocumentClick);
     } else if (!nextState.open && this.state.open) {
