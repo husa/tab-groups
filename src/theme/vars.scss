@@ -1,11 +1,14 @@
 $body-font-size: 16px;
 $body-font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 
-$border-radius: 2px;
+$border-radius: 4px;
 
-$color-primary: #2196f3;
-$color-primary-light: #64b5f6;
-$color-primary-dark: #1565c0;
+// $color-primary: #2196f3;
+// $color-primary-light: #64b5f6;
+// $color-primary-dark: #1565c0;
+$color-primary: #1a73e8;
+$color-primary-light: #69a1ff;
+$color-primary-dark: #0049b5;
 $color-secondary: #e53935;
 $color-secondary-light: #ff6f60;
 $color-secondary-dark: #ab000d;
@@ -24,8 +27,8 @@ $button-bg: #eeeeee;
 $button-bg-hover: #f0f0f0;
 $button-bg-active: #ccc;
 
-$input-padding-x: 1rem;
+$input-padding-x: 0.5rem;
 $input-padding-y: 0;
-$input-height: 36px;
+$input-height: 2rem;
 
 $zindex-dropdown: 1000;
