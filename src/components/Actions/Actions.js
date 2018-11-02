@@ -134,12 +134,22 @@ class Actions extends React.Component<Props, State> {
         <div className="actions__bar">
           <Button
             type="primary"
-            raised={!this.props.groups.length}
+            icon="plus-box-multiple-outline"
+            rounded
+            outline={!this.props.groups.length && !this.state.showNewGroupForm}
+            raised
             onClick={this.onCreateNewGroupClick}>
             {/* <Icon name="plus-box-multiple-outline" /> */}
             {lang.t('actionsNewGroup')}
           </Button>
-          <Button type="primary" disabled={!this.props.groups.length} onClick={this.onAddTabClick}>
+          <Button
+            type="primary"
+            icon="plus-box-outline"
+            rounded
+            flat
+            raised
+            disabled={!this.props.groups.length}
+            onClick={this.onAddTabClick}>
             {/* <Icon name="plus-box-outline" /> */}
             {lang.t('actionsAddTabToGroup')}
           </Button>

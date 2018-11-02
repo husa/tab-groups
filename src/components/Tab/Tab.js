@@ -65,12 +65,17 @@ class Tab extends React.Component<Props> {
     if (!this.props.showActions) return null;
     return (
       <div className="tab__actions">
-        <Button type="primary" flat onClick={this.onOpenClick}>
+        <Button type="primary" flat icon="open-in-app" onClick={this.onOpenClick}>
           {lang.t('groupOpen')}
         </Button>
-        <Button type="secondary" flat icon="delete-forever" onClick={this.onRemoveClick}>
-          {lang.t('generalRemove')}
-        </Button>
+        <Button
+          type="secondary"
+          flat
+          rounded
+          compact
+          icon="delete-forever"
+          onClick={this.onRemoveClick}
+        />
       </div>
     );
   }

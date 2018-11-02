@@ -5,7 +5,7 @@
   min-width: 240px;
   user-select: none;
 
-  $group-selector-height: 36px;
+  $group-selector-height: $input-height;
 
   &__content {
     display: flex;
