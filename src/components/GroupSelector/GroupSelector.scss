@@ -12,7 +12,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0 0.5rem 0 1rem;
+    padding: $input-padding-y $input-padding-x;
     line-height: $group-selector-height;
     height: $group-selector-height;
     background: #fff;
@@ -48,16 +48,16 @@
     width: 100%;
     background: #fff;
     border-radius: $border-radius;
-    padding: 0.5rem 0;
+    padding: 0.25rem 0;
     z-index: $zindex-dropdown;
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
       0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   }
 
   &__option {
-    font-size: 1rem;
-    line-height: 3rem;
-    padding: 0 1rem;
+    font-size: 0.875rem;
+    line-height: $input-height;
+    padding: $input-padding-y $input-padding-x;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
