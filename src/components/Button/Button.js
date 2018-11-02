@@ -14,6 +14,7 @@ type Props = {
   raised?: boolean,
   compact?: boolean,
   rounded?: boolean,
+  outline?: boolean,
   icon?: string,
   children?: React.Node
 };
@@ -25,6 +26,7 @@ const Button = ({
   raised = false,
   compact = false,
   rounded = false,
+  outline = false,
   icon,
   children,
   ...rest
@@ -35,7 +37,9 @@ const Button = ({
       'button--raised': raised,
       'button--compact': compact,
       'button--rounded': rounded,
-      'button--icon': icon
+      'button--outline': outline,
+      'button--icon': icon,
+      'button--empty': !children
     })}
     {...rest}>
     {icon && <Icon name={icon} className="button__icon" />}
